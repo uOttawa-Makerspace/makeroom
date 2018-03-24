@@ -33,6 +33,7 @@ gem 'jquery-ui-rails', '~> 5.0.5'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'bootstrap','~> 4.0.0'
 gem 'popper_js', '~> 1.12.9'
+gem 'devise'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
