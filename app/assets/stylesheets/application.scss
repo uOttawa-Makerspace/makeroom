@@ -3,6 +3,10 @@
 @import 'jquery-ui/theme.css';
 @import "bootstrap";
 
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
 .form-signin {
   width: 100%;
   max-width: 330px;
@@ -60,4 +64,25 @@ input.password{
 }
 .navbar-brand:hover {
   color: #eeeeee;
+}
+.site-header {
+  background-color: rgba(0, 0, 0, .85);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+.site-header a {
+  color: #999;
+  transition: ease-in-out color .15s;
+}
+.site-header a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.navbar-brand {
+  color: #fff !important;
+  transition: ease-in-out color .15s;
+}
+.navbar-brand:hover {
+  color: #999 !important;
+  text-decoration: none;
 }

@@ -10,12 +10,14 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    .d-flex.flex-column.flex-md-row.align-items-center.p-3.px-md-4.mb-3.bg-dark.border-bottom.box-shadow.fixed-top
-      a.my-0.mr-md-auto.font-weight-normal.navbar-brand href="#" Makeroom
-      nav.my-2.my-md-0.mr-md-3
-      - if user_signed_in?
-        = link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-light"
-      - else
-        = link_to "Sign in", new_user_session_path, class: "btn btn-outline-light"
-    .container.col-8 role="main" style="padding-bottom: 10px; padding-left: 0px; padding-right: 0px; padding-top: 0px !important; margin-top: 70px;"
+    nav.site-header.sticky-top.py-1
+      .container.d-flex.flex-column.flex-md-row.justify-content-between
+        a.my-0.mr-md-auto.font-weight-normal.navbar-brand href="#" Makeroom
+        nav.my-2.my-md-0.mr-md-3
+          = link_to 'Bookings', bookings_path, class: "py-2 d-none d-md-inline-block"
+        - if user_signed_in?
+          = link_to "Sign out", destroy_user_session_path, method: :delete, class: "py-2 d-none d-md-inline-block"
+        - else
+          = link_to "Sign in", new_user_session_path, class: "py-2 d-none d-md-inline-block"
+    .container.col-10 role="main" style="padding-bottom: 10px; padding-left: 0px; padding-right: 0px; padding-top: 0px !important; margin-top: 40px;"
       = yield
