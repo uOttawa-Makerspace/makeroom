@@ -2,6 +2,7 @@
 @import 'jquery-ui/datepicker.css';
 @import 'jquery-ui/theme.css';
 @import "bootstrap";
+@import 'fullcalendar';
 
 img {
     max-width: 100%;
@@ -55,6 +56,9 @@ input.password{
   padding: 5px;
   margin: 5px;
 }
+.container {
+  width: 80%;
+}
 .starter-template {
   padding: 3rem 1.5rem;
   text-align: center;
@@ -85,4 +89,33 @@ input.password{
 .navbar-brand:hover {
   color: #999 !important;
   text-decoration: none;
+}
+.hide{
+  display: none;
+}
+.bar-row {
+  position: relative;
+  border-bottom: 0.0625rem solid #999;
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.fc-today {
+    background: #e1f5fe !important;
+}
+.btn-blue{
+  background: linear-gradient(#42a1ec,#0070c9);
+  border-color: #07c;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  color: #ffffff;
+}
+.btn-blue:hover{
+  background: linear-gradient(#51a9ee,#147bcd);
+  border-color: #07c;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  color: #ffffff;
 }

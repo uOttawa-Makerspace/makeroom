@@ -14,5 +14,8 @@
 //= require rails-ujs
 //= require jquery
 //= require jquery-ui
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/gcal
 //= require turbolinks
 //= require_tree .

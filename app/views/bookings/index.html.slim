@@ -1,2 +1,17 @@
 h1 Bookings
-= link_to "New Booking", new_booking_path, class: "btn btn-primary"
+= link_to "New Booking", new_booking_path, class: "btn btn-blue"
+table.table style="margin-top: 1rem"
+  thead
+    tr
+      th Name
+      th Date
+      th colspan="2"
+  tbody
+    - @bookings.each do |booking|
+      tr
+        td = (booking.name)
+        td = (booking.date_humanize)
+        td.button-col
+          = link_to 'View', booking, class: 'btn btn-blue'
+        td.button-col
+          = link_to 'Delete', booking, method: 'delete', class: 'btn btn-danger'
