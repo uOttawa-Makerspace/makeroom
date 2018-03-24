@@ -24,6 +24,10 @@ class BookingsController < ApplicationController
     redirect_to bookings_path
   end
 
+  def show
+    @booking = Booking.find(params[:id])
+  end
+
   def booking_params
     params.require(:booking).permit(:name, :email, :event_name, :location, :start_date)
   end
