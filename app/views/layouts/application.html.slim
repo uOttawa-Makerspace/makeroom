@@ -9,6 +9,19 @@ html
     = stylesheet_link_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css","application", :media => "all"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-
   body
-    = yield
+    nav.navbar.navbar-expand.navbar-dark.bg-dark
+      .container.d-flex.flex-column.flex-md-row.justify-content-between
+        a.navbar-brand href="#" Makeroom
+        .collapse.navbar-collapse
+          ul.navbar-nav.mr-auto
+            li.nav-item.active
+              a.nav-link href="#" Link 1
+            li.nav-item.active
+              a.nav-link href="#" Link 1
+          - if user_signed_in?
+            = link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-light"
+          - else
+            = link_to "Sign in", new_user_session_path, class: "btn btn-outline-light"
+    main
+      = yield
