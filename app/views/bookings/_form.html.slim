@@ -1,0 +1,12 @@
+= simple_form_for @booking do |f|
+  h3 Details
+  .row
+    .col-xs-12.col-sm-6.form-group
+      = f.input :name
+  .row
+    .col-xs-12.col-sm-6.form-group
+      = f.input :email
+  .row
+    .col-xs-12.col-sm-6.form-group
+      = f.input :event_name
+  = f.button :submit
