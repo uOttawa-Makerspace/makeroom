@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title = ("Makeroom")
+    script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+    script language="JavaScript" type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"
+
+    = csrf_meta_tags
+    = stylesheet_link_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css","application", :media => "all"
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body
+    = yield
