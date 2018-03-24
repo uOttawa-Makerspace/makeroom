@@ -28,6 +28,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'slim'
 gem 'simple_form'
 gem 'byebug'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'bootstrap','~> 4.0.0'
+gem 'popper_js', '~> 1.12.9'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
