@@ -34,9 +34,12 @@
 
 javascript:
   var initialize_calendar;
+  var calendar_event;
+  calendar_event = gon.bookings["makerspace"];
     initialize_calendar = function() {
       $('.calendar').fullCalendar({
           defaultView: 'agendaWeek',
+          events: calendar_event,
           height: 'auto',
           minTime: '12:00:00',
           maxTime: '20:00:00',
@@ -53,3 +56,27 @@ javascript:
         });
     };
     $(document).on('turbolinks:load', initialize_calendar);
+    $(document).ready(function() {
+      $('#booking_location').change(function() {
+        var selected_location = this.value;
+        console.log(selected_location);
+        if(selected_location=="makerspace") {
+          calendar_event = gon.bookings["makerspace"];
+          $('.calendar').fullCalendar('removeEvents');
+          $('.calendar').fullCalendar('addEventSource', calendar_event);
+          $('.calendar').fullCalendar('rerenderEvents');
+        }
+        else if(selected_location=="makerlab") {
+          calendar_event = gon.bookings["makerlab"];
+          $('.calendar').fullCalendar('removeEvents');
+          $('.calendar').fullCalendar('addEventSource', calendar_event);
+          $('.calendar').fullCalendar('rerenderEvents');
+        }
+        else if(selected_location=="makerlounge") {
+          calendar_event = gon.bookings["makerlounge"];
+          $('.calendar').fullCalendar('removeEvents');
+          $('.calendar').fullCalendar('addEventSource', calendar_event);
+          $('.calendar').fullCalendar('rerenderEvents');
+        }
+      });
+    });

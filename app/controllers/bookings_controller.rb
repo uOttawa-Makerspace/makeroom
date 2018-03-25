@@ -5,11 +5,15 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @makerspace_bookings = Booking.where(location: Booking.locations[:makerspace])
+    @makerlab_bookings = Booking.where(location: Booking.locations[:makerlab])
+    @makerlounge_bookings = Booking.where(location: Booking.locations[:makerlounge])
+    @brunsfield_bookings = Booking.where(location: Booking.locations[:brunsfield])
+    gon.jbuilder template: 'app/views/bookings/index.json.jbuilder', as: :bookings
   end
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.end_date = (@booking.start_date + 1.hours).to_datetime if @booking.end_date.nil?
     @booking.approved = false
     if @booking.save
       redirect_to bookings_path
@@ -29,6 +33,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:name, :email, :event_name, :location, :start_date)
+    params.require(:booking).permit(:name, :email, :event_name, :location, :start_date, :end_date)
   end
 end

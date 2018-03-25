@@ -34,6 +34,7 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'bootstrap','~> 4.0.0'
 gem 'popper_js', '~> 1.12.9'
 gem 'devise'
+gem 'gon'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
