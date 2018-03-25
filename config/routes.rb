@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'home/index'
 
-  resources :bookings
+  resources :bookings do
+    post :approve, on: :member
+  end
 end

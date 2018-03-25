@@ -1,0 +1,23 @@
+h3 Booking Details
+.bar-row
+.row
+  .col-xs-12.col-sm-6
+    .subtitle = ("Name")
+    span.offerValue = (@booking.name)
+.row
+  .col-xs-12.col-sm-6
+    .subtitle = ("Email")
+    span.offerValue = (@booking.email)
+.row
+  .col-xs-12.col-sm-6
+    .subtitle = ("Event Name")
+    span.offerValue = (@booking.event_name)
+.row
+  .col-xs-12.col-sm-6
+    .subtitle = ("Location")
+    span.offerValue = (@booking.location_humanize)
+.row
+  .col-xs-12.col-sm-6
+    .subtitle = ("Date & Time")
+    span.offerValue = (@booking.date_humanize)
+.row
