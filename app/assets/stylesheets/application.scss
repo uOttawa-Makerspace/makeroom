@@ -3,6 +3,7 @@
 @import 'jquery-ui/theme.css';
 @import "bootstrap";
 @import 'fullcalendar';
+@import "font-awesome";
 
 img {
     max-width: 100%;
@@ -82,13 +83,16 @@ input.password{
   color: #fff;
   text-decoration: none;
 }
-.navbar-brand {
+.site-logo {
   color: #fff !important;
   transition: ease-in-out color .15s;
 }
-.navbar-brand:hover {
+.site-logo:hover {
   color: #999 !important;
   text-decoration: none;
+}
+.p-2 {
+    padding: .5rem !important;
 }
 .hide{
   display: none;
@@ -136,4 +140,7 @@ input.password{
 }
 .offerValue {
   margin-left: 1rem;
+}
+.center-icon{
+  vertical-align: middle;
 }

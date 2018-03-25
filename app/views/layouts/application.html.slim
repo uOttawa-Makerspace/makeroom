@@ -4,20 +4,25 @@ html
     title = ("MakerRoom")
     script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
     script language="JavaScript" type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"
-
+    link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet"
     = csrf_meta_tags
     = stylesheet_link_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css","application", :media => "all"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
   body
     nav.site-header.sticky-top.py-1
       .container.d-flex.flex-column.flex-md-row.justify-content-between
-        a.my-0.mr-md-auto.font-weight-normal.navbar-brand href="/home/index" MakerRoom
-        nav.my-2.my-md-0.mr-md-3
-          = link_to 'Bookings', bookings_path, class: "py-2 d-none d-md-inline-block"
+        a.py-2.d-none.d-md-inline-block.site-logo href="/home/index" MakerRoom
+        a.py-2.d-none.d-md-inline-block href="/rooms/makerspace" data-turbolinks="false" Makerspace
+        a.py-2.d-none.d-md-inline-block href="/rooms/makerlab" data-turbolinks="false" Makerlab
+        a.py-2.d-none.d-md-inline-block href="/rooms/makerlounge" data-turbolinks="false" Makerlounge
+        a.py-2.d-none.d-md-inline-block href="/rooms/brunsfield" data-turbolinks="false" Brunsfield Center
         - if user_signed_in?
+          = link_to 'Bookings', bookings_path, class: "py-2 d-none d-md-inline-block center-icon"
           = link_to "Sign out", destroy_user_session_path, method: :delete, class: "py-2 d-none d-md-inline-block"
         - else
-          = link_to "Sign in", new_user_session_path, class: "py-2 d-none d-md-inline-block"
+          = link_to new_user_session_path, class: "py-2 d-none d-md-inline-block center-icon" do
+            i.far.fa-user-circle.fa-lg
     .container.col-10 role="main" style="padding-bottom: 10px; padding-left: 0px; padding-right: 0px; padding-top: 0px !important; margin-top: 40px;"
       = yield

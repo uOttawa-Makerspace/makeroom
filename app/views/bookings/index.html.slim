@@ -17,8 +17,9 @@ table.table style="margin-top: 1rem"
         td = (booking.approved ? "Yes" : "No")
         td.button-col
           = link_to 'View', booking, class: 'btn btn-blue'
-        td.button-col
-          - if !booking.approved
-            = link_to 'Approve', approve_booking_path(id: booking.id), method: :post, class: 'btn btn-blue'
+        - if current_user.admin?
+          td.button-col
+            - if !booking.approved
+              = link_to 'Approve', approve_booking_path(id: booking.id), method: :post, class: 'btn btn-blue'
         td.button-col
           = link_to 'Delete', booking, method: 'delete', class: 'btn btn-red'

@@ -35,6 +35,7 @@ gem 'bootstrap','~> 4.0.0'
 gem 'popper_js', '~> 1.12.9'
 gem 'devise'
 gem 'gon'
+gem "font-awesome-rails"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

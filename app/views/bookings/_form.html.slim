@@ -78,5 +78,11 @@ javascript:
           $('.calendar').fullCalendar('addEventSource', calendar_event);
           $('.calendar').fullCalendar('rerenderEvents');
         }
+        else if(selected_location=="brunsfield") {
+          calendar_event = gon.bookings["brunsfield"];
+          $('.calendar').fullCalendar('removeEvents');
+          $('.calendar').fullCalendar('addEventSource', calendar_event);
+          $('.calendar').fullCalendar('rerenderEvents');
+        }
       });
     });

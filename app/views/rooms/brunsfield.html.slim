@@ -1,0 +1,21 @@
+.starter-template
+  h1 Brunsfield Center
+  .calendar
+
+javascript:
+  var initialize_calendar;
+    initialize_calendar = function() {
+      $('.calendar').fullCalendar({
+          defaultView: 'agendaWeek',
+          events: '/rooms/brunsfield.json',
+          height: 'auto',
+          minTime: '12:00:00',
+          maxTime: '20:00:00',
+          slotDuration: '00:60:00',
+          allDaySlot: false,
+          selectable: false,
+          selectHelper: true,
+          eventLimit: true,
+        });
+    };
+    $(document).on('turbolinks:load', initialize_calendar);
