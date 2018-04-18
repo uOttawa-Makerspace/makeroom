@@ -2,7 +2,9 @@ doctype html
 html
   head
     title = ("MakerRoom")
-    script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+    script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"
+    script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"
+    script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"
     script language="JavaScript" type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"
     link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet"
     = csrf_meta_tags
@@ -20,7 +22,12 @@ html
         a.py-2.d-none.d-md-inline-block href="/rooms/brunsfield" data-turbolinks="false" Brunsfield Center
         - if user_signed_in?
           = link_to 'Bookings', bookings_path, class: "py-2 d-none d-md-inline-block center-icon"
-          = link_to "Sign out", destroy_user_session_path, method: :delete, class: "py-2 d-none d-md-inline-block"
+          .dropdown
+            button.dropdown-toggle.py-2.d-none.d-md-inline-block.center-icon.profile-icon type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: none; border: 0;"
+              i.far.fa-user-circle.fa-lg
+            .dropdown-menu aria-labelledby="dropdownMenuButton"
+              = link_to 'Profile', edit_user_path, class: "dropdown-item dropdown-link"
+              = link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item dropdown-link"
         - else
           = link_to new_user_session_path, class: "py-2 d-none d-md-inline-block center-icon" do
             i.far.fa-user-circle.fa-lg

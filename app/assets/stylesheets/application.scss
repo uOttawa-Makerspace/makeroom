@@ -91,6 +91,14 @@ input.password{
   color: #999 !important;
   text-decoration: none;
 }
+.profile-icon {
+  color: #999 !important;
+  transition: ease-in-out color .15s;
+}
+.profile-icon:hover {
+  color: #fff !important;
+  text-decoration: none;
+}
 .p-2 {
     padding: .5rem !important;
 }
@@ -143,4 +151,10 @@ input.password{
 }
 .center-icon{
   vertical-align: middle;
+}
+.dropdown-toggle::after {
+    display:none
+}
+.dropdown-link{
+  color: #0070c9 !important;
 }
