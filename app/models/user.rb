@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  enum role: [:admin, :staff]
+  enum role: [:admin, :staff, :brunsfield, :sandbox]
 
   def set_default_role
     self.role ||= :staff

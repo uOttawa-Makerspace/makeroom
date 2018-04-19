@@ -10,12 +10,23 @@ class BookingsController < ApplicationController
     @makerlounge_bookings = Booking.where(location: Booking.locations[:makerlounge])
     @brunsfield_bookings = Booking.where(location: Booking.locations[:brunsfield])
     @sandbox_bookings = Booking.where(location: Booking.locations[:sandbox])
+    @locations = Booking.location_list.map {|k,v| [v,k]}
+
+    if current_user.role == 'brunsfield'
+      @locations = [["Brunsfield",'brunsfield']]
+    elsif current_user.role == 'sandbox'
+      @locations = [["Sandbox",'sandbox']]
+    end
     gon.jbuilder template: 'app/views/bookings/index.json.jbuilder', as: :bookings
   end
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.approved = false
+    if current_user.role == 'brunsfield' || current_user.role == 'sandbox'
+      @booking.approved = true
+    else
+      @booking.approved = false
+    end
     if @booking.save
       redirect_to bookings_path
     else

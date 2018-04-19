@@ -23,3 +23,9 @@ table.table style="margin-top: 1rem"
               = link_to 'Approve', approve_booking_path(id: booking.id), method: :post, class: 'btn btn-blue'
           td.button-col
             = link_to 'Delete', booking, method: 'delete', class: 'btn btn-red'
+        - if booking.location == 'brunsfield' && current_user.role == 'brunsfield'
+          td.button-col
+            = link_to 'Delete', booking, method: 'delete', class: 'btn btn-red'
+        - if booking.location == 'sandbox' && current_user.role == 'sandbox'
+          td.button-col
+            = link_to 'Delete', booking, method: 'delete', class: 'btn btn-red'
