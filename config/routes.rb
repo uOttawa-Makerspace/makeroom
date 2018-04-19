@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get 'rooms/brunsfield'
 
+  get 'rooms/sandbox'
+
   resources :rooms
 
   devise_for :users

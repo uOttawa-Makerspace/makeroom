@@ -14,4 +14,8 @@ class RoomsController < ApplicationController
   def brunsfield
     @brunsfield_bookings = Booking.where(location: Booking.locations[:brunsfield])
   end
+
+  def sandbox
+    @sandbox_bookings = Booking.where(location: Booking.locations[:sandbox])
+  end
 end

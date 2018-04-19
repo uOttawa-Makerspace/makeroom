@@ -5,8 +5,8 @@ class Booking < ApplicationRecord
   validates :email, presence: true
   validates :event_name, presence: true
   validates :location, presence: true
-  
-  enum location: %i[makerspace makerlab makerlounge brunsfield]
+
+  enum location: %i[makerspace makerlab makerlounge brunsfield sandbox]
 
   def date_humanize
     start = I18n.l start_date, format: :short if start_date.present?
@@ -20,6 +20,7 @@ class Booking < ApplicationRecord
       makerlab: "Makerlab",
       makerlounge: "Makerlounge",
       brunsfield: "Brunsfield Center",
+      sandbox: "Sandbox"
     }
   end
 
@@ -29,6 +30,7 @@ class Booking < ApplicationRecord
       makerlab: "Makerlab",
       makerlounge: "Makerlounge",
       brunsfield: "Brunsfield Center",
+      sandbox: "Sandbox"
     }
     all_locations_list[location.to_sym]
   end

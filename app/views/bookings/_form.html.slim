@@ -84,5 +84,11 @@ javascript:
           $('.calendar').fullCalendar('addEventSource', calendar_event);
           $('.calendar').fullCalendar('rerenderEvents');
         }
+        else if(selected_location=="sandbox") {
+          calendar_event = gon.bookings["sandbox"];
+          $('.calendar').fullCalendar('removeEvents');
+          $('.calendar').fullCalendar('addEventSource', calendar_event);
+          $('.calendar').fullCalendar('rerenderEvents');
+        }
       });
     });

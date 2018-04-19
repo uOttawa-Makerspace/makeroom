@@ -9,6 +9,7 @@ class BookingsController < ApplicationController
     @makerlab_bookings = Booking.where(location: Booking.locations[:makerlab])
     @makerlounge_bookings = Booking.where(location: Booking.locations[:makerlounge])
     @brunsfield_bookings = Booking.where(location: Booking.locations[:brunsfield])
+    @sandbox_bookings = Booking.where(location: Booking.locations[:sandbox])
     gon.jbuilder template: 'app/views/bookings/index.json.jbuilder', as: :bookings
   end
 
