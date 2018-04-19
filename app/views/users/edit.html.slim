@@ -1,4 +1,7 @@
 h1 Edit Profile
+br
+h3 General
+.bar-row
 = simple_form_for @user, :url => {:action => "update_profile"}, html: { class: "form-horizontal"} do |form|
   .row
     .col-xs-12.col-sm-6.form-group
