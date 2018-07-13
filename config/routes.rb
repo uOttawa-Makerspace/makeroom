@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :bookings do
     post :approve, on: :member
+    post :disapprove, on: :member
   end
 
   resource :user, only: [:edit] do
