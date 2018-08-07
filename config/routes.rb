@@ -25,4 +25,9 @@ Rails.application.routes.draw do
       patch 'update_profile'
     end
   end
+
+  namespace :admin do
+    get :index
+
+  end
 end
