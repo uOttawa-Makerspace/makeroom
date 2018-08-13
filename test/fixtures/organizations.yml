@@ -4,8 +4,12 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+Makerspace:
+  id: 1
+  name: Makerspace
 # column: value
 #
-two: {}
+Brunsfield:
+  id: 2
+  name: Brunsfield
 # column: value

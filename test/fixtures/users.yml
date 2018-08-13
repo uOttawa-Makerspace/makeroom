@@ -6,31 +6,23 @@
 #
 adam:
   id: 1
-  name: adam
+  first_name: Adam
+  last_name: Amber
+  username: adam
   email: adam@gmail.com
-  password: $2a$10$CdKIia2HsjiFqYWtmDbV2ed4SY2Yn0oU.JdcIzPq09FSg71yZxIzq
+  # password: Password1
+  encrypted_password: $2a$10$CdKIia2HsjiFqYWtmDbV2ed4SY2Yn0oU.JdcIzPq09FSg71yZxIzq
   role: admin
-# column: value
-#
-olivia:
-  id: 2
-  name: olivia
-  email: olivia@gmail.com
-  password: $2a$10$CdKIia2HsjiFqYWtmDbV2ed4SY2Yn0oU.JdcIzPq09FSg71yZxIzq
-  role: sandbox
+  organization_id: 1
+
 
 mary:
-  id: 3
-  name: mary
+  id: 2
+  first_name: Mary
+  last_name: Manroe
+  username: mary
   email: mary@gmail.com
-  password: $2a$10$CdKIia2HsjiFqYWtmDbV2ed4SY2Yn0oU.JdcIzPq09FSg71yZxIzq
-  role: brunsfield
-
-bob:
-  id: 4
-  name: bob
-  email: bob@gmail.com
-  password: $2a$10$CdKIia2HsjiFqYWtmDbV2ed4SY2Yn0oU.JdcIzPq09FSg71yZxIzq
+  # password: Password1
+  encrypted_password: $2a$10$CdKIia2HsjiFqYWtmDbV2ed4SY2Yn0oU.JdcIzPq09FSg71yZxIzq
   role: staff
-
-# column: value
+  organization_id: 2
