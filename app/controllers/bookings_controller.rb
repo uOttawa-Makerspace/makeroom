@@ -6,17 +6,23 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     @makerspace_bookings = Booking.where(location: Booking.locations[:makerspace])
-    @makerlab_bookings = Booking.where(location: Booking.locations[:makerlab])
-    @makerlounge_bookings = Booking.where(location: Booking.locations[:makerlounge])
-    @brunsfield_bookings = Booking.where(location: Booking.locations[:brunsfield])
+    @makerlab119_bookings = Booking.where(location: Booking.locations[:makerlab119])
+    @makerlab121_bookings = Booking.where(location: Booking.locations[:makerlab121])
+    @mill1_bookings = Booking.where(location: Booking.locations[:mill1])
+    @lathe1_bookings = Booking.where(location: Booking.locations[:lathe1])
+    @lathe2_bookings = Booking.where(location: Booking.locations[:lathe2])
+    @welding1_bookings = Booking.where(location: Booking.locations[:welding1])
+    @welding2_bookings = Booking.where(location: Booking.locations[:welding2])
     @sandbox_bookings = Booking.where(location: Booking.locations[:sandbox])
+    @trailer_bookings = Booking.where(location: Booking.locations[:trailer])
+
     @locations = Booking.location_list.map {|k,v| [v,k]}
 
-    if current_user.role == 'brunsfield'
-      @locations = [["Brunsfield",'brunsfield']]
-    elsif current_user.role == 'sandbox'
-      @locations = [["Sandbox",'sandbox']]
-    end
+    # if current_user.role == 'brunsfield'
+    #   @locations = [["Brunsfield",'brunsfield']]
+    # elsif current_user.role == 'sandbox'
+    #   @locations = [["Sandbox",'sandbox']]
+    # end
     gon.jbuilder template: 'app/views/bookings/index.json.jbuilder', as: :bookings
   end
 
