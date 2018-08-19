@@ -7,7 +7,7 @@ json.makerspace @makerspace_bookings do |booking|
   json.color '#ef5350'
 end
 
-json.makerlab @makerlab_bookings do |booking|
+json.makerlab119 @makerlab119_bookings do |booking|
   json.id booking.id
   json.name booking.name
   json.title booking.event_name
@@ -16,7 +16,7 @@ json.makerlab @makerlab_bookings do |booking|
   json.color '#ef5350'
 end
 
-json.makerlounge @makerlounge_bookings do |booking|
+json.makerlab121 @makerlab121_bookings do |booking|
   json.id booking.id
   json.name booking.name
   json.title booking.event_name
@@ -25,7 +25,43 @@ json.makerlounge @makerlounge_bookings do |booking|
   json.color '#ef5350'
 end
 
-json.brunsfield @brunsfield_bookings do |booking|
+json.mill1 @mill1_bookings do |booking|
+  json.id booking.id
+  json.name booking.name
+  json.title booking.event_name
+  json.start booking.start_date
+  json.end booking.end_date
+  json.color '#ef5350'
+end
+
+json.lathe1 @lathe1_bookings do |booking|
+  json.id booking.id
+  json.name booking.name
+  json.title booking.event_name
+  json.start booking.start_date
+  json.end booking.end_date
+  json.color '#ef5350'
+end
+
+json.lathe2 @lathe2_bookings do |booking|
+  json.id booking.id
+  json.name booking.name
+  json.title booking.event_name
+  json.start booking.start_date
+  json.end booking.end_date
+  json.color '#ef5350'
+end
+
+json.welding1 @welding1_bookings do |booking|
+  json.id booking.id
+  json.name booking.name
+  json.title booking.event_name
+  json.start booking.start_date
+  json.end booking.end_date
+  json.color '#ef5350'
+end
+
+json.welding2 @welding2_bookings do |booking|
   json.id booking.id
   json.name booking.name
   json.title booking.event_name
@@ -35,6 +71,15 @@ json.brunsfield @brunsfield_bookings do |booking|
 end
 
 json.sandbox @sandbox_bookings do |booking|
+  json.id booking.id
+  json.name booking.name
+  json.title booking.event_name
+  json.start booking.start_date
+  json.end booking.end_date
+  json.color '#ef5350'
+end
+
+json.trailer @trailer_bookings do |booking|
   json.id booking.id
   json.name booking.name
   json.title booking.event_name

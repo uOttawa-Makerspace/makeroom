@@ -1,13 +1,23 @@
 Rails.application.routes.draw do
   get 'rooms/makerspace'
 
-  get 'rooms/makerlab'
+  get 'rooms/makerlab119'
 
-  get 'rooms/makerlounge'
-
-  get 'rooms/brunsfield'
+  get 'rooms/makerlab121'
 
   get 'rooms/sandbox'
+
+  get 'rooms/mill1'
+
+  get 'rooms/lathe1'
+
+  get 'rooms/lathe2'
+
+  get 'rooms/welding1'
+
+  get 'rooms/welding2'
+
+  get 'rooms/trailer'
 
   resources :rooms
 

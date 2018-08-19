@@ -35,7 +35,7 @@
 javascript:
   var initialize_calendar;
   var calendar_event;
-  calendar_event = gon.bookings["makerspace"];
+  calendar_event = gon.bookings[params[:location]];
     initialize_calendar = function() {
       $('.calendar').fullCalendar({
           defaultView: 'agendaWeek',
