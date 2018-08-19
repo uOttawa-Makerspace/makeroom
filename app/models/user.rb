@@ -21,7 +21,7 @@ class User < ApplicationRecord
     uniqueness: {message: "Username is already taken."}
 
   validates :password,
-    presence: {message: "Please provide a password."}, :on => :create,
+    presence: {message: "Please provide a password."},
     confirmation: {message: "Your passwords do not match."}, :on => :create
 
 
