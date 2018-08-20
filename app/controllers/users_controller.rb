@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def update_profile
     @user = current_user
+    @user.skip_password_validation = true
     if @user.update(user_params)
       flash[:notice] = "Profile updated Successfully"
       redirect_to edit_user_path
