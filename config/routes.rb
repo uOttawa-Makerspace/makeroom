@@ -17,11 +17,17 @@ Rails.application.routes.draw do
 
   resources :bookings do
     post :approve, on: :member
+    post :disapprove, on: :member
   end
 
   resource :user, only: [:edit] do
     collection do
       patch 'update_profile'
     end
+  end
+
+  namespace :admin do
+    get :index, path: '/'
+
   end
 end

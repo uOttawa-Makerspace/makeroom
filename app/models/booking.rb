@@ -6,7 +6,7 @@ class Booking < ApplicationRecord
   validates :event_name, presence: true
   validates :location, presence: true
 
-  enum location: %i[makerspace makerlab makerlounge brunsfield sandbox]
+  enum location: %i[makerspace makerlab119 makerlab121 sandbox mill1 lathe1 lathe2 welding1 welding2]
 
   def date_humanize
     start = I18n.l start_date, format: :short if start_date.present?
@@ -17,20 +17,30 @@ class Booking < ApplicationRecord
   def self.location_list
     {
       makerspace: "Makerspace",
-      makerlab: "Makerlab",
-      makerlounge: "Makerlounge",
-      brunsfield: "Brunsfield Center",
-      sandbox: "Sandbox"
+      makerlab119: "Makerlab 119",
+      makerlab121: "Makerlab 121",
+      sandbox: "Sandbox",
+      mill1: "Mill 1",
+      lathe1: "Lathe 1",
+      lathe2: "Lathe 2",
+      welding1: "Welding 1",
+      welding2: "Welding 2",
+      trailer: "CEED Trailer"
     }
   end
 
   def location_humanize
     all_locations_list = {
       makerspace: "Makerspace",
-      makerlab: "Makerlab",
-      makerlounge: "Makerlounge",
-      brunsfield: "Brunsfield Center",
-      sandbox: "Sandbox"
+      makerlab119: "Makerlab 119",
+      makerlab121: "Makerlab 121",
+      sandbox: "Sandbox",
+      mill1: "Mill 1",
+      lathe1: "Lathe 1",
+      lathe2: "Lathe 2",
+      welding1: "Welding 1",
+      welding2: "Welding 2",
+      trailer: "CEED Trailer"
     }
     all_locations_list[location.to_sym]
   end

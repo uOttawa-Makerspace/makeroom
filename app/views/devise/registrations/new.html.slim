@@ -3,13 +3,17 @@
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = f.error_notification
     .form-inputs.center
-      = f.input :name, required: false, autofocus: true, placeholder: 'Name', label: false, input_html: { class: 'email'}
-      = f.input :email, required: false, autofocus: true, placeholder: 'Email', label: false
-      = f.input :password, required: false, placeholder: 'Password', label: false
-      = f.input :password_confirmation, required: false, placeholder: 'Password confirmation', label: false
-
+      = f.input :first_name, required:false, autofocus: true, placeholder: "First Name", label: false, input_html: { class: 'first_name'}
+      = f.input :last_name, required:false, autofocus: true, placeholder: "Last Name", label: false, input_html: { class: 'last_name'}
+      = f.input :username, required:false, autofocus: true, placeholder: "Username", label: false, input_html: { class: 'username'}
+      = f.input :email, required: true, autofocus: true, placeholder: 'Email', label: false
+      = f.input :password, required: true, placeholder: 'Password', label: false
+      = f.input :password_confirmation, required: true, placeholder: 'Password confirmation', label: false
+      = f.select :organization_id, options_from_collection_for_select(Organization.all, 'id', 'name'), prompt: "Select Organization", required: true, label: false
+      p If your organization is not in the list, please contact an administrator.
     .form-actions.center
       = f.button :submit, "Sign up", class: 'btn.btn-primary'
       br
       br
+      p Already have an account?
       = render "devise/shared/links"

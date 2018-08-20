@@ -1,3 +1,4 @@
+
 h1 Edit Profile
 br
 h3 General
@@ -5,14 +6,14 @@ h3 General
 = simple_form_for @user, :url => {:action => "update_profile"}, html: { class: "form-horizontal"} do |form|
   .row
     .col-xs-12.col-sm-6.form-group
-      label.control-label for="input" Name
-      = form.input :name, as: :string, label: false, error: false
+      / label.control-label for="input" Name
+      / = form.input :first_name, as: :string, label: "First Name", error: false, required: false
+      = form.input :first_name, label: "First Name", error: true, required: false, input_html: { class: 'first_name'}
+      = form.input :last_name, as: :string, label: "Last Name", error: true, required: false, input_html: { class: 'last_name'}
+      = form.label :organization_id
+      = form.select :organization_id, options_from_collection_for_select(Organization.all, 'id', 'name', @user_organization_id), prompt: "Organization"
       .bar
-  .row
-    .col-xs-12.col-sm-6.form-group
-      label.control-label for="input" Email
-      = form.input :email, as: :string, label: false, error: false
-      .bar
+
   .row
     .col-xs-12.col-sm-6.form-group
       = form.submit "Save", class: "btn btn-blue"

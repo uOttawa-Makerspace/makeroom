@@ -49,6 +49,18 @@ img {
   text-align: center;
   padding: 20px;
 }
+input.first_name {
+  padding: 5px;
+  margin: 5px;
+}
+input.last_name {
+  padding: 5px;
+  margin: 5px;
+}
+input.username {
+  padding: 5px;
+  margin: 5px;
+}
 input.email {
   padding: 5px;
   margin: 5px;
@@ -56,6 +68,15 @@ input.email {
 input.password{
   padding: 5px;
   margin: 5px;
+}
+select#user_organization_id{
+  padding: 5px;
+  margin: 5px;
+}
+span.error{
+  color: #df0909;
+  font-size: 10px;
+  display: block;
 }
 .container {
   width: 80%;

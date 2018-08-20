@@ -54,6 +54,27 @@ class BookingsController < ApplicationController
     end
   end
 
+  def disapprove
+    @booking = Booking.find(params[:id])
+    @booking.approved = false
+    if @booking.save
+      redirect_to bookings_path
+    else
+      redirect_to bookings_path
+    end
+  end
+
+  def update
+    if @booking.update(booking_params)
+      flash[:notice] = "Booking updated successfully."
+      redirect_to bookings_path
+    else
+      flash[:alert] = "Could not save changes."
+      redirect_to bookings_path
+    end
+  end
+
+private
   def booking_params
     params.require(:booking).permit(:name, :email, :event_name, :location, :start_date, :end_date)
   end
