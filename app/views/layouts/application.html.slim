@@ -18,19 +18,20 @@ html
         a.py-2.d-none.d-md-inline-block.site-logo href="/home/index" MakerRoom
         a.py-2.d-none.d-md-inline-block href="/rooms/makerspace" data-turbolinks="false" Makerspace
 
-        a.dropdown-toggle.py-2.d-none.d-md-inline-block href="javascript:void(0)" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" Makerlab
-        / .dropdown-menu aria-labelledby="dropdownMenuButton"
-        /   = link_to 'Makerlab 119', rooms_makerlab119_path, class: "dropdown-item dropdown-link"
-        /   = link_to 'Makerlab 121', rooms_makerlab121_path, class: "dropdown-item dropdown-link"
+        .dropdown
+          a.dropdown-toggle.py-2.d-none.d-md-inline-block href="javascript:void(0)" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" Makerlab
+          .dropdown-menu aria-labelledby="dropdownMenuButton"
+           = link_to 'Makerlab 119', rooms_makerlab119_path, class: "dropdown-item dropdown-link"
+           = link_to 'Makerlab 121', rooms_makerlab121_path, class: "dropdown-item dropdown-link"
 
-        a.dropdown-toggle.py-2.d-none.d-md-inline-block href="javascript:void(0)" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" Brunsfield Center
-        .dropdown-menu aria-labelledby="dropdownMenuButton"
-          = link_to 'Mill 1', rooms_mill1_path, class: "dropdown-item dropdown-link"
-          = link_to 'Lathe 1', rooms_lathe1_path, class: "dropdown-item dropdown-link"
-          = link_to 'Lathe 2', rooms_lathe2_path, class: "dropdown-item dropdown-link"
-          = link_to 'Welding 1', rooms_welding1_path, class: "dropdown-item dropdown-link"
-          = link_to 'Welding 2', rooms_welding2_path, class: "dropdown-item dropdown-link"
-
+        .dropdown
+          a.dropdown-toggle.py-2.d-none.d-md-inline-block href="javascript:void(0)" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" Brunsfield Center
+          .dropdown-menu aria-labelledby="dropdownMenuButton2"
+            = link_to 'Mill 1', rooms_mill1_path, class: "dropdown-item dropdown-link"
+            = link_to 'Lathe 1', rooms_lathe1_path, class: "dropdown-item dropdown-link"
+            = link_to 'Lathe 2', rooms_lathe2_path, class: "dropdown-item dropdown-link"
+            = link_to 'Welding 1', rooms_welding1_path, class: "dropdown-item dropdown-link"
+            = link_to 'Welding 2', rooms_welding2_path, class: "dropdown-item dropdown-link"
 
         a.py-2.d-none.d-md-inline-block href="/rooms/sandbox" data-turbolinks="false" Sandbox
         a.py-2.d-none.d-md-inline-block href="/rooms/trailer" data-turbolinks="false" CEED Trailer
