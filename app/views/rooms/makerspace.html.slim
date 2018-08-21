@@ -1,5 +1,7 @@
 .starter-template
   h1 Makerspace
+  -if @current_user
+    = link_to "New Booking", new_booking_path(:location => :makerspace), class: "btn btn-blue"
   .calendar
 
 javascript:

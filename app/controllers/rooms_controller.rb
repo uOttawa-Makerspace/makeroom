@@ -1,9 +1,11 @@
 class RoomsController < ApplicationController
   def makerspace
+    @current_user = current_user
     @makerspace_bookings = Booking.where(location: Booking.locations[:makerspace])
   end
 
   def makerlab119
+    @current_user = current_user
     @makerlab119_bookings = Booking.where(location: Booking.locations[:makerlab119])
   end
 

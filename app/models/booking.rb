@@ -44,4 +44,5 @@ class Booking < ApplicationRecord
     }
     all_locations_list[location.to_sym]
   end
+
 end

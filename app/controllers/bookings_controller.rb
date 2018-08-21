@@ -16,8 +16,11 @@ class BookingsController < ApplicationController
     @sandbox_bookings = Booking.where(location: Booking.locations[:sandbox])
     @trailer_bookings = Booking.where(location: Booking.locations[:trailer])
 
-    @locations = Booking.location_list.map {|k,v| [v,k]}
-
+    # @locations = Booking.location_list.map {|k,v| [v,k]}
+    # if params[:location].present?
+    # binding.pry
+    @location = params[:location]
+    # end
     # if current_user.role == 'brunsfield'
     #   @locations = [["Brunsfield",'brunsfield']]
     # elsif current_user.role == 'sandbox'
@@ -48,6 +51,7 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+
   end
 
   def approve
