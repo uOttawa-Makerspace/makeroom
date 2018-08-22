@@ -19,6 +19,8 @@ class BookingsController < ApplicationController
     # @locations = Booking.location_list.map {|k,v| [v,k]}
     # if params[:location].present?
     # binding.pry
+    @booking[:location] = params[:location]
+    # binding.pry
     @location = params[:location]
     # end
     # if current_user.role == 'brunsfield'
