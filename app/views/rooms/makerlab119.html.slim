@@ -2,11 +2,12 @@
   h1 Makerlab 119
   -if @current_user
     = link_to "New Booking", new_booking_path(:location => "makerlab119"), class: "btn btn-blue"
-
+  br
+  br
+  br
   .calendar_makerlab119
 
 javascript:
-  setTimeout("jQuery('.calendar_makerlab119').fullCalendar( 'render' );",100);
   var initialize_calendar;
     initialize_calendar = function() {
       $('.calendar_makerlab119').fullCalendar({
@@ -20,6 +21,13 @@ javascript:
           selectable: false,
           selectHelper: true,
           eventLimit: true,
+          firstDay: 1,
+          header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'agendaDay,agendaWeek,month'
+          },
+
         });
     };
     $(document).on('turbolinks:load', initialize_calendar);

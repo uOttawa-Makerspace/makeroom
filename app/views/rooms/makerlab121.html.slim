@@ -3,23 +3,33 @@
   -if @current_user
     = link_to "New Booking", new_booking_path(:location => "makerlab121"), class: "btn btn-blue"
 
+  br
+  br
+  br
 
-  .calendar
+  .calendar_makerlab119
 
 javascript:
   var initialize_calendar;
     initialize_calendar = function() {
-      $('.calendar').fullCalendar({
+      $('.calendar_makerlab119').fullCalendar({
           defaultView: 'agendaWeek',
           events: '/rooms/makerlab121.json',
-          height: 'auto',
-          minTime: '12:00:00',
-          maxTime: '20:00:00',
-          slotDuration: '00:60:00',
+          height: '100',
+          minTime: '8:00:00',
+          maxTime: '23:00:00',
+          slotDuration: '00:15:00',
           allDaySlot: false,
           selectable: false,
           selectHelper: true,
           eventLimit: true,
+          firstDay: 1,
+          header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'agendaDay,agendaWeek,month'
+          },
+
         });
     };
     $(document).on('turbolinks:load', initialize_calendar);

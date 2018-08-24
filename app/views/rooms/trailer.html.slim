@@ -3,23 +3,32 @@
   -if @current_user
     = link_to "New Booking", new_booking_path(:location => "trailer"), class: "btn btn-blue"
 
-
-  .calendar
+  br
+  br
+  br
+  .calendar_trailer
 
 javascript:
   var initialize_calendar;
     initialize_calendar = function() {
-      $('.calendar').fullCalendar({
+      $('.calendar_trailer').fullCalendar({
           defaultView: 'agendaWeek',
           events: '/rooms/trailer.json',
-          height: 'auto',
-          minTime: '12:00:00',
-          maxTime: '20:00:00',
+          height: '100',
+          minTime: '00:00:00',
+          maxTime: '23:59:59',
           slotDuration: '00:15:00',
           allDaySlot: true,
           selectable: false,
           selectHelper: true,
           eventLimit: true,
+          firstDay: 1,
+          header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'agendaDay,agendaWeek,month'
+          },
+
         });
     };
     $(document).on('turbolinks:load', initialize_calendar);
