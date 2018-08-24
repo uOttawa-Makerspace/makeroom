@@ -20,7 +20,7 @@ table.table style="margin-top: 1rem"
         - if current_user.admin?
           td.button-col
             - if !booking.approved
-              = link_to 'Approve', approve_booking_path(id: booking.id), method: :post, class: 'btn btn-blue'
+              = link_to 'Approve', approve_booking_path(id: booking.id), method: :post, class: 'btn btn-green'
             - if booking.approved
               = link_to 'Disapprove', disapprove_booking_path(id: booking.id), method: :post, class:'btn btn-blue'
           td.button-col
