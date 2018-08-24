@@ -1,4 +1,6 @@
 class Booking < ApplicationRecord
+  belongs_to :user
+
   validates :start_date,
     presence: { message: "Please select a start date." }
   validates :end_date,

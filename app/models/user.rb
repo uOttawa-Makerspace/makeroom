@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-  # has_many: :bookings
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   belongs_to :organization
+  has_many :bookings, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable
   enum role: [:admin, :staff, :brunsfield, :sandbox]
@@ -21,9 +21,9 @@ class User < ApplicationRecord
     presence: {message: "Username is required."},
     uniqueness: {message: "Username is already taken."}
 
-  validates :password,
-    presence: {message: "Please provide a password."}, unless: :skip_password_validation,
-    confirmation: {message: "Your passwords do not match."}, unless: :skip_password_validation
+  validates :password, unless: :skip_password_validation,
+    presence: {message: "Please provide a password."},
+    confirmation: {message: "Your passwords do not match."}
 
   attr_accessor :skip_password_validation
 
