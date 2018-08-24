@@ -105,6 +105,7 @@ span.error{
   text-decoration: none;
 }
 .site-logo {
+  font-size: 20px;
   color: #fff !important;
   transition: ease-in-out color .15s;
 }
@@ -160,6 +161,19 @@ span.error{
   background: linear-gradient(#e40a0a,#9f0202);
   color: #ffffff;
 }
+.btn-green{
+  background: linear-gradient(#00D685,#00AB6A);
+  border-color: #0B7343;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  color: #ffffff;
+}
+.btn-green:hover{
+  background: linear-gradient(#00E39A,#26DEA5);
+  color: #ffffff;
+}
+
 .subtitle {
   font-size: 14px;
   color: #737a81;
