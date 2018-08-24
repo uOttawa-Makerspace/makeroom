@@ -4,14 +4,88 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-# booking1{
-#   name: Sam
-#   email: sam@gmail.com
-#   event_name: Meeting
-#   location: makerspace
-#   start_date:
-#   end_date:
-# }
+booking1:
+  name: Sam
+  email: sam@gmail.com
+  event_name: Makerspace
+  location: makerspace
+  start_date: 2018-08-23 09:00:00
+  end_date: 2018-08-23 15:00:00
+  approved: true
+
+booking2:
+  name: Alex
+  email: Alex@gmail.com
+  event_name: Makerlab119
+  location: makerlab119
+  start_date: 2018-08-24 10:00:00
+  end_date: 2018-08-24 16:00:00
+  approved: true
+
+booking3:
+  name: Abby
+  email: Abby@gmail.com
+  event_name: Makerlab121
+  location: makerlab121
+  start_date: 2018-08-22 10:00:00
+  end_date: 2018-08-22 16:00:00
+  approved: true
+
+booking4:
+  name: Betty
+  email: betty@gmail.com
+  event_name: Sandbox
+  location: sandbox
+  start_date: 2018-08-21 10:00:00
+  end_date: 2018-08-21 16:00:00
+  approved: true
+
+booking5:
+  name: Cindy
+  email: cindy@gmail.com
+  event_name: Trailer
+  location: trailer
+  start_date: 2018-08-20 10:00:00
+  end_date: 2018-08-20 16:00:00
+  approved: true
+
+booking6:
+  name: Dexter
+  email: dexter@gmail.com
+  event_name: Mill1
+  location: mill1
+  start_date: 2018-08-27 10:00:00
+  end_date: 2018-08-27 16:00:00
+  approved: true
+
+booking7:
+  name: Fred
+  email: fred@gmail.com
+  event_name: Lathe1
+  location: lathe1
+  start_date: 2018-08-28 10:00:00
+  end_date: 2018-08-28 16:00:00
+  approved: true
+
+booking8:
+  name: Eddie
+  email: eddie@gmail.com
+  event_name: Welding1
+  location: welding1
+  start_date: 2018-08-29 10:00:00
+  end_date: 2018-08-29 16:00:00
+  approved: true
+
+booking9:
+  name: George
+  email: george@gmail.com
+  event_name: Welding2
+  location: welding2
+  start_date: 2018-08-29 10:00:00
+  end_date: 2018-08-29 16:00:00
+  approved: true
+
+
 # column: value
 #
 # two: {}
