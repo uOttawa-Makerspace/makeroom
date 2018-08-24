@@ -1,5 +1,9 @@
 .starter-template
   h1 Brunsfield Center - Mill 1
+  -if @current_user
+    = link_to "New Booking", new_booking_path(:location => "mill1"), class: "btn btn-blue"
+
+
   .calendar
 
 javascript:

@@ -1,5 +1,9 @@
 .starter-template
   h1 Makerlab 121
+  -if @current_user
+    = link_to "New Booking", new_booking_path(:location => "makerlab121"), class: "btn btn-blue"
+
+
   .calendar
 
 javascript:

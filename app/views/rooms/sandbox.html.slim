@@ -1,5 +1,9 @@
 .starter-template
   h1 Sandbox
+  -if @current_user
+    = link_to "New Booking", new_booking_path(:location => "sandbox"), class: "btn btn-blue"
+
+
   .calendar
 
 javascript:

@@ -1,5 +1,9 @@
 .starter-template
   h1 Brunsfield Center - Lathe 2
+  -if @current_user
+    = link_to "New Booking", new_booking_path(:location => "lathe2"), class: "btn btn-blue"
+
+
   .calendar
 
 javascript:
