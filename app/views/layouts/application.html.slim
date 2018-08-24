@@ -7,15 +7,17 @@ html
     script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"
     script language="JavaScript" type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"
     link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet"
+    link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"
     = csrf_meta_tags
     = stylesheet_link_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css","application", :media => "all"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = favicon_link_tag 'site-icon.png'
 
   body
     nav.site-header.sticky-top.py-1
       .container.d-flex.flex-column.flex-md-row.justify-content-between
-        a.py-2.d-none.d-md-inline-block.site-logo href="/home/index" MakerRoom
+        a.py-2.d-none.d-md-inline-block.site-logo href="/home/index" Maker<b>Room</b>
         a.py-2.d-none.d-md-inline-block href="/rooms/makerspace" data-turbolinks="false" Makerspace
 
         .dropdown
