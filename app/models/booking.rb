@@ -1,12 +1,17 @@
 class Booking < ApplicationRecord
-  validates :start_date, presence: true
-  validates :end_date, presence: true
-  validates :name, presence: true
-  validates :email, presence: true
-  validates :event_name, presence: true
+  validates :start_date,
+    presence: { message: "Please select a start date." }
+  validates :end_date,
+    presence: { message: "Please select a end date." }
+  validates :name,
+    presence: { message: "Please provide a name." }
+  validates :email,
+    presence: { message: "Please provide an email." }
+  validates :event_name,
+    presence: { message: "Please provide an event name." }
   validates :location, presence: true
 
-  enum location: %i[makerspace makerlab119 makerlab121 sandbox mill1 lathe1 lathe2 welding1 welding2]
+  enum location: %i[makerspace makerlab119 makerlab121 sandbox mill1 lathe1 lathe2 welding1 welding2 trailer]
 
   def date_humanize
     start = I18n.l start_date, format: :short if start_date.present?
