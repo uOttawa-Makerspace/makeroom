@@ -33,15 +33,15 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-
-    if current_user.role == 'brunsfield' || current_user.role == 'sandbox'
-      @booking.approved = true
-    else
-      @booking.approved = false
-    end
+    @booking.user_id = current_user.id
+    # if current_user.role == 'brunsfield' || current_user.role == 'sandbox'
+    #   @booking.approved = true
+    # else
+    #   @booking.approved = false
+    # end
     if @booking.save
       flash[:notice] = "Event created successfully!"
-      redirect_to bookings_path
+      redirect_to root_path
     else
       flash[:error] = "Could not save the event. Please make sure to provide all the required information."
       redirect_to new_booking_path(:location => @booking.location)
