@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    @bookings = @user.bookings
     if @user.organization_id.present?
       @user_organization_id = @user.organization_id
     else
