@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
-    @bookings = @user.bookings
+    @bookings = @user.bookings.where('end_date BETWEEN ? AND ? ', DateTime.now.beginning_of_day , 1.month.from_now.end_of_day).order('start_date ASC').paginate(page: params[:page], per_page: 10)
     if @user.organization_id.present?
       @user_organization_id = @user.organization_id
     else
