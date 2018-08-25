@@ -46,7 +46,7 @@
     -elsif @location == "makerlab121"
       .calendar_makerlab121_book
     -elsif @location == "sandbox"
-      .calendar_trailer_book
+      .calendar_sandbox_book
     -elsif @location == "mill1"
       .calendar_mill1_book
     -elsif @location == "lathe1"
@@ -68,10 +68,6 @@ javascript:
   var initialize_calendar;
   var calendar_event;
   var loc = document.getElementById('location').value;
-  console.log(loc);
-    // switch(loc) {
-      // console.log("mspace");
-      // case "makerspace":
 
   $(document).ready(function() {
     // calendar_event = gon.bookings["makerspace"];
@@ -79,7 +75,7 @@ javascript:
       initialize_calendar = function() {
         $('.calendar_makerspace_book').fullCalendar({
             defaultView: 'agendaWeek',
-            events: gon.bookings["makerspace"],
+            // events: gon.bookings["makerspace"],
             height: '100',
             minTime: '08:00:00',
             maxTime: '23:00:00',
@@ -92,19 +88,23 @@ javascript:
             selectOverlap: false,
             firstDay: 1,
             events: [
+
               {
                 dow: [0],
                 start: '11:00',
                 end: '17:00',
                 rendering: 'background'
               }
+
+            ],
+            eventSources: [
+              '/rooms/makerspace.json'
             ],
             validRange: function(nowDate) {
                 return {
                   start: nowDate.clone().subtract(1, 'days'),
                 };
             },
-            // weekends: false,
             select: function(start, end) {
               $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
               $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
@@ -134,7 +134,6 @@ javascript:
                   start: nowDate.clone().subtract(1, 'days'),
                 };
             },
-            // weekends: false,
             select: function(start, end) {
               $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
               $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
@@ -165,7 +164,6 @@ javascript:
                   start: nowDate.clone().subtract(1, 'days'),
                 };
             },
-            // weekends: false,
             select: function(start, end) {
               $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
               $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
@@ -197,7 +195,6 @@ javascript:
                   start: nowDate.clone().subtract(1, 'days'),
                 };
             },
-            // weekends: false,
             select: function(start, end) {
               $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
               $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
@@ -419,89 +416,4 @@ javascript:
     }
 
     $(document).on('turbolinks:load', initialize_calendar);
-
-    // setTimeout("jQuery('.calendar_makerspace').fullCalendar( 'render' );",100);
-    console.log("2");
   });
-        // case "makerlab119":
-        //   initialize_calendar = function() {
-        //     $('.calendar').fullCalendar({
-        //         defaultView: 'agendaWeek',
-        //         events: calendar_event,
-        //         height: 'auto',
-        //         minTime: '8:00:00',
-        //         maxTime: '15:00:00',
-        //         slotDuration: '00:15:00',
-        //         allDaySlot: false,
-        //         selectable: true,
-        //         selectHelper: true,
-        //         eventLimit: true,
-        //
-        //         select: function(start, end) {
-        //           $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
-        //           $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
-        //         }
-        //       });
-        //   };
-
-    // }
-    // $(document).on('turbolinks:load', initialize_calendar);
-
-  // });
-//   // calendar_event = gon.bookings["makerspace"];
-//   //   initialize_calendar = function() {
-//   //     $('.calendar').fullCalendar({
-//   //         defaultView: 'agendaWeek',
-//   //         events: calendar_event,
-//   //         height: 'auto',
-//   //         minTime: '8:00:00',
-//   //         maxTime: '23:00:00',
-//   //         slotDuration: '00:15:00',
-//   //         allDaySlot: false,
-//   //         selectable: true,
-//   //         selectHelper: true,
-//   //         eventLimit: true,
-//   //
-//   //         select: function(start, end) {
-//   //           $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
-//   //           $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
-//   //         }
-//   //       });
-//   //   };
-//   //   $(document).on('turbolinks:load', initialize_calendar);
-//     $(document).ready(function() {
-//       $('#booking_location').change(function() {
-//         var selected_location = this.value;
-//         console.log(selected_location);
-//         if(selected_location=="makerspace") {
-//           calendar_event = gon.bookings["makerspace"];
-//           $('.calendar').fullCalendar('removeEvents');
-//           $('.calendar').fullCalendar('addEventSource', calendar_event);
-//           $('.calendar').fullCalendar('rerenderEvents');
-//         }
-//         else if(selected_location=="makerlab") {
-//           calendar_event = gon.bookings["makerlab"];
-//           $('.calendar').fullCalendar('removeEvents');
-//           $('.calendar').fullCalendar('addEventSource', calendar_event);
-//           $('.calendar').fullCalendar('rerenderEvents');
-//         }
-//         else if(selected_location=="makerlounge") {
-//           calendar_event = gon.bookings["makerlounge"];
-//           $('.calendar').fullCalendar('removeEvents');
-//           $('.calendar').fullCalendar('addEventSource', calendar_event);
-//           $('.calendar').fullCalendar('rerenderEvents');
-//         }
-//         else if(selected_location=="brunsfield") {
-//           calendar_event = gon.bookings["brunsfield"];
-//           $('.calendar').fullCalendar('removeEvents');
-//           $('.calendar').fullCalendar('addEventSource', calendar_event);
-//           $('.calendar').fullCalendar('rerenderEvents');
-//         }
-//         else if(selected_location=="sandbox") {
-//           calendar_event = gon.bookings["sandbox"];
-//           $('.calendar').fullCalendar('removeEvents');
-//           $('.calendar').fullCalendar('addEventSource', calendar_event);
-//           $('.calendar').fullCalendar('rerenderEvents');
-//         }
-//       });
-//     });
