@@ -1,6 +1,10 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.all.order("id DESC").paginate(page: params[:page], per_page: 10)
+    if current_user && current_user.admin?
+      @bookings = Booking.all.order("id DESC").paginate(page: params[:page], per_page: 10)
+    else
+      redirect_to root_path
+    end
   end
 
   def new
