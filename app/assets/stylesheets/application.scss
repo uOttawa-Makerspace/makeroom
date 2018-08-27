@@ -198,3 +198,27 @@ span.error{
 .location_title{
   font-size: 24px;
 }
+
+
+#hidden{
+  display: none;
+}
+
+#booking_repeat{
+  margin: 10px;
+}
+select#booking_until_date_1i{
+  width: 100px;
+  margin: 5px;
+  display: inline;
+}
+select#booking_until_date_2i{
+  width: 150px;
+  display: inline;
+  margin: 5px;
+}
+select#booking_until_date_3i{
+  width: 100px;
+  display: inline;
+  margin: 5px;
+}
