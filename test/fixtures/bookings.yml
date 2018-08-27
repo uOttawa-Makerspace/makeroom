@@ -10,8 +10,8 @@ booking1:
   email: sam@gmail.com
   event_name: Makerspace
   location: makerspace
-  start_date: 2018-08-23 09:00:00
-  end_date: 2018-08-23 15:00:00
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 8, min: 00) %>
   approved: true
   user_id: 1
 
@@ -21,11 +21,10 @@ booking2:
   email: Alex@gmail.com
   event_name: Makerlab119
   location: makerlab119
-  start_date: 2018-08-24 10:00:00
-  end_date: 2018-08-24 16:00:00
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 15, min: 00) %>
   approved: true
   user_id: 1
-
 
 booking3:
   id: 3
@@ -33,8 +32,8 @@ booking3:
   email: Abby@gmail.com
   event_name: Makerlab121
   location: makerlab121
-  start_date: 2018-08-22 10:00:00
-  end_date: 2018-08-22 16:00:00
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 10, min: 00) %>
   approved: true
   user_id: 1
 
@@ -44,8 +43,8 @@ booking4:
   email: betty@gmail.com
   event_name: Sandbox
   location: sandbox
-  start_date: 2018-08-21 10:00:00
-  end_date: 2018-08-21 16:00:00
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 10, min: 00) %>
   approved: true
   user_id: 1
 
@@ -55,8 +54,8 @@ booking5:
   email: cindy@gmail.com
   event_name: Trailer
   location: trailer
-  start_date: 2018-08-20 10:00:00
-  end_date: 2018-08-20 16:00:00
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 10, min: 00) %>
   approved: true
   user_id: 1
 
@@ -66,8 +65,8 @@ booking6:
   email: dexter@gmail.com
   event_name: Mill1
   location: mill1
-  start_date: 2018-08-27 10:00:00
-  end_date: 2018-08-27 16:00:00
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 10, min: 00) %>
   approved: true
   user_id: 1
 
@@ -77,8 +76,8 @@ booking7:
   email: fred@gmail.com
   event_name: Lathe1
   location: lathe1
-  start_date: 2018-08-28 10:00:00
-  end_date: 2018-08-28 16:00:00
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 10, min: 00) %>
   approved: true
   user_id: 2
 
@@ -89,8 +88,8 @@ booking8:
   email: eddie@gmail.com
   event_name: Welding1
   location: welding1
-  start_date: 2018-08-29 10:00:00
-  end_date: 2018-08-29 16:00:00
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 10, min: 00) %>
   approved: true
   user_id: 2
 
@@ -100,8 +99,8 @@ booking9:
   email: george@gmail.com
   event_name: Welding2
   location: welding2
-  start_date: 2018-08-29 10:00:00
-  end_date: 2018-08-29 16:00:00
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 10, min: 00) %>
   approved: true
   user_id: 2
 
@@ -111,11 +110,7 @@ booking10:
   email: haily@gmail.com
   event_name: Lathe2
   location: lathe2
-  start_date: 2018-08-28 10:00:00
-  end_date: 2018-08-28 16:00:00
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 10, min: 00) %>
   approved: true
   user_id: 2
-# column: value
-#
-# two: {}
-# column: value
