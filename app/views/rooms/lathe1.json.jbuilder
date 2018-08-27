@@ -1,4 +1,4 @@
-lathe1_events = json.array!(@lathe1_bookings) do |booking|
+lathe1_events = json.array!(@lathe1_bookings) do |booking|    
   json.id booking.id
   json.name booking.name
   json.title booking.event_name
