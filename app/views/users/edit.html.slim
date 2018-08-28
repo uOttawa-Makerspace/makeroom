@@ -17,3 +17,34 @@ h3 General
   .row
     .col-xs-12.col-sm-6.form-group
       = form.submit "Save", class: "btn btn-blue"
+.bar-row
+h3 Your Bookings
+/ .bar-row
+table.table style="margin-top: 1rem"
+  thead
+    tr
+      th Name
+      th Location
+      th Date & Time
+      th Approved
+      th colspan="3" Actions
+      tbody
+        - @bookings.each do |booking|
+          tr
+            td = (booking.name)
+            td = (booking.location_humanize)
+            td = (booking.date_humanize)
+            td = (booking.approved ? "Yes" : "No")
+            td.button-col
+              = link_to 'View', booking, class: 'btn btn-blue'
+              - if current_user.admin?
+                td.button-col
+                  - if !booking.approved
+                    = link_to 'Approve', approve_booking_path(id: booking.id), method: :post, class: 'btn btn-green'
+                  - if booking.approved
+                    = link_to 'Disapprove', disapprove_booking_path(id: booking.id), method: :post, class:'btn btn-blue'
+            td.button-col
+              = link_to 'Delete', booking, method: 'delete', class: 'btn btn-red'
+
+div
+  = will_paginate @bookings, :container => false

@@ -1,4 +1,4 @@
-sandbox_events = json.array!(@sandbox_bookings) do |booking|
+makerlab121_events = json.array!(@makerlab121_bookings) do |booking|
   json.id booking.id
   json.name booking.name
   json.title booking.event_name
@@ -11,4 +11,4 @@ sandbox_events = json.array!(@sandbox_bookings) do |booking|
   end
 end
 
-sandbox_events
+makerlab121_events

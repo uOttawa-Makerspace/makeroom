@@ -37,6 +37,8 @@ gem 'devise'
 gem 'gon'
 gem "font-awesome-rails"
 gem 'will_paginate', '>= 3.1'
+gem 'pry', '~> 0.11.3'
+gem 'ice_cube'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

@@ -1,27 +1,28 @@
 .starter-template
-  h1 Sandbox
+  h1 Brunsfield Center - Welding 1
   -if @current_user
-    = link_to "New Booking", new_booking_path(:location => "sandbox"), class: "btn btn-blue"
+    = link_to "New Booking", new_booking_path(:location => "welding1"), class: "btn btn-blue"
+    br
+    br
+    br
 
-  br
-  br
-  br
-  .calendar_sandbox
+  .calendar_welding1
 
 javascript:
   var initialize_calendar;
     initialize_calendar = function() {
-      $('.calendar_sandbox').fullCalendar({
+      $('.calendar_welding1').fullCalendar({
           defaultView: 'agendaWeek',
-          events: '/rooms/sandbox.json',
-          height: '100',
+          events: '/rooms/welding1.json',
+          height: 'auto',
           minTime: '8:00:00',
-          maxTime: '23:00:00',
-          slotDuration: '00:15:00',
+          maxTime: '17:00:00',
+          slotDuration: '00:30:00',
           allDaySlot: false,
           selectable: false,
           selectHelper: true,
           eventLimit: true,
+          hiddenDays: [0],
           firstDay: 1,
           header: {
             left: 'prev,next today',

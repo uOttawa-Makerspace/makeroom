@@ -1,6 +1,13 @@
 = simple_form_for @booking do |f|
+  = f.error_notification
+  .row
+    .col-xs-12.col-sm-6.location_title
+      = @location.humanize
   br
   h3 Details
+  h5 Please provide all the requested information below. Select the date and time of your booking by selecting the calendar.
+  -if @location == 'mill1' || @location == 'lathe1' || @location == 'lathe2' || @location == 'welding1' || @location == 'welding2'
+    h6 Note: You can only select slots up to 3 hours
   .bar-row
   .row
     .col-xs-12.col-sm-6.form-group
@@ -11,9 +18,24 @@
   .row
     .col-xs-12.col-sm-6.form-group
       = f.input :event_name, as: :string, label: false, placeholder: "Event Name", input_html: { class: 'form-control'}
+
+  .row.hide
+    .col-xs-12.col-sm-6.form-group
+      = f.input :location, as: :string, label: false, readonly: true, input_html: { class: 'form-control', id: 'location'}
+
   .row
     .col-xs-12.col-sm-6.form-group
-      = f.input :location, label: false, collection: @locations, prompt: "Select Location", input_html: { class: 'custom-select'}
+        = f.label :repeat
+        = f.check_box :repeat, onclick: "toggleVisibility();", input_html: { class: 'form-control'}
+
+  #hidden style="display: none"
+    .row
+      .col-xs-12.col-sm-6.form-group
+        =f.input :frequency, as: :select, collection: Booking.frequencies.keys, label: false, input_html: { class: 'form-control'}
+
+    .row
+      .col-xs-12.col-sm-6.form-group
+        =f.input :until_date, type: :date,  input_html: { class: 'form-control'}
   br
   h3 Select Date & Time
   .bar-row
@@ -28,67 +50,382 @@
       = f.input :end_date, as: :string, label: false
       .bar
   div
-    .calendar
+    -if @location == "makerspace"
+      .calendar_makerspace_book
+    -elsif @location == "makerlab119"
+      .calendar_makerlab119_book
+    -elsif @location == "makerlab121"
+      .calendar_makerlab121_book
+    -elsif @location == "sandbox"
+      .calendar_sandbox_book
+    -elsif @location == "mill1"
+      .calendar_mill1_book
+    -elsif @location == "lathe1"
+      .calendar_lathe1_book
+    -elsif @location == "lathe2"
+      .calendar_lathe2_book
+    -elsif @location == "welding1"
+      .calendar_welding1_book
+    -elsif @location == "welding2"
+      .calendar_welding2_book
+    -elsif @location == "trailer"
+      .calendar_trailer_book
+
+
   br
   = f.submit "Complete Booking", class: 'btn btn-blue'
 
 javascript:
   var initialize_calendar;
   var calendar_event;
-  calendar_event = gon.bookings["makerspace"];
-    initialize_calendar = function() {
-      $('.calendar').fullCalendar({
-          defaultView: 'agendaWeek',
-          events: calendar_event,
-          height: 'auto',
-          minTime: '12:00:00',
-          maxTime: '20:00:00',
-          slotDuration: '00:60:00',
-          allDaySlot: false,
-          selectable: true,
-          selectHelper: true,
-          eventLimit: true,
+  var loc = document.getElementById('location').value;
 
-          select: function(start, end) {
-            $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
-            $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
-          }
-        });
-    };
+  $(document).ready(function() {
+    // calendar_event = gon.bookings["makerspace"];
+    if(loc == 'makerspace'){
+      initialize_calendar = function() {
+        $('.calendar_makerspace_book').fullCalendar({
+            defaultView: 'agendaWeek',
+            // events: gon.bookings["makerspace"],
+            height: '100',
+            minTime: '08:00:00',
+            maxTime: '23:00:00',
+            slotMinutes: 15,
+            slotDuration: '00:15:00',
+            allDaySlot: false,
+            selectable: true,
+            selectHelper: true,
+            eventLimit: true,
+            selectOverlap: false,
+            firstDay: 1,
+            events: [
+
+              {
+                dow: [0],
+                start: '11:00',
+                end: '17:00',
+                rendering: 'background'
+              }
+
+            ],
+            eventSources: [
+              '/rooms/makerspace.json'
+            ],
+            validRange: function(nowDate) {
+                return {
+                  start: nowDate.clone().subtract(1, 'days'),
+                };
+            },
+            select: function(start, end) {
+              $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
+              $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
+            }
+          });
+      };
+    }
+    else if(loc == 'makerlab119'){
+      initialize_calendar = function() {
+        $('.calendar_makerlab119_book').fullCalendar({
+            defaultView: 'agendaWeek',
+            events: gon.bookings["makerlab119"],
+            height: '100',
+            minTime: '08:00:00',
+            maxTime: '23:00:00',
+            slotMinutes: 15,
+            slotDuration: '00:15:00',
+            allDaySlot: false,
+            selectable: true,
+            selectHelper: true,
+            eventLimit: true,
+            selectOverlap: false,
+            firstDay: 1,
+
+            validRange: function(nowDate) {
+                return {
+                  start: nowDate.clone().subtract(1, 'days'),
+                };
+            },
+            select: function(start, end) {
+              $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
+              $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
+            }
+          });
+      };
+
+    }
+    else if(loc == 'makerlab121'){
+      initialize_calendar = function() {
+        $('.calendar_makerlab121_book').fullCalendar({
+            defaultView: 'agendaWeek',
+            events: gon.bookings["makerlab121"],
+            height: '100',
+            minTime: '08:00:00',
+            maxTime: '23:00:00',
+            slotMinutes: 15,
+            slotDuration: '00:15:00',
+            allDaySlot: false,
+            selectable: true,
+            selectHelper: true,
+            eventLimit: true,
+            selectOverlap: false,
+            firstDay: 1,
+
+            validRange: function(nowDate) {
+                return {
+                  start: nowDate.clone().subtract(1, 'days'),
+                };
+            },
+            select: function(start, end) {
+              $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
+              $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
+            }
+          });
+      };
+
+    }
+
+    else if(loc == 'sandbox'){
+      initialize_calendar = function() {
+        $('.calendar_sandbox_book').fullCalendar({
+            defaultView: 'agendaWeek',
+            events: gon.bookings["sandbox"],
+            height: '100',
+            minTime: '08:00:00',
+            maxTime: '23:00:00',
+            slotMinutes: 15,
+            slotDuration: '00:15:00',
+            allDaySlot: false,
+            selectable: true,
+            selectHelper: true,
+            eventLimit: true,
+            selectOverlap: false,
+            firstDay: 1,
+
+            validRange: function(nowDate) {
+                return {
+                  start: nowDate.clone().subtract(1, 'days'),
+                };
+            },
+            select: function(start, end) {
+              $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
+              $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
+            }
+          });
+      };
+
+    }
+
+    else if(loc == 'trailer'){
+      initialize_calendar = function() {
+        $('.calendar_trailer_book').fullCalendar({
+            defaultView: 'agendaWeek',
+            events: gon.bookings["trailer"],
+            height: '100',
+            minTime: '00:00:00',
+            maxTime: '23:59:59',
+            slotMinutes: 15,
+            slotDuration: '00:15:00',
+            allDaySlot: true,
+            selectable: true,
+            selectHelper: true,
+            eventLimit: true,
+            selectOverlap: false,
+            firstDay: 1,
+
+            validRange: function(nowDate) {
+                return {
+                  start: nowDate.clone().subtract(1, 'days'),
+                };
+            },
+            // weekends: false,
+            select: function(start, end) {
+              $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
+              $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
+            }
+          });
+      };
+    }
+    else if(loc == 'mill1'){
+      initialize_calendar = function() {
+        $('.calendar_mill1_book').fullCalendar({
+            defaultView: 'agendaWeek',
+            events: gon.bookings["mill1"],
+            height: 'auto',
+            minTime: '08:00:00',
+            maxTime: '17:00:00',
+            slotMinutes: 30,
+            slotDuration: '00:30:00',
+            allDaySlot: false,
+            selectable: true,
+            selectHelper: true,
+            eventLimit: true,
+            selectOverlap: false,
+            firstDay: 1,
+            hiddenDays: [0],
+            firstDay: 1,
+
+            validRange: function(nowDate) {
+                return {
+                  start: nowDate.clone().subtract(1, 'days'),
+                };
+            },
+            selectAllow: function(selectInfo) {
+                     var duration = moment.duration(selectInfo.end.diff(selectInfo.start));
+                     return duration.asHours() <= 3;
+            },
+            // weekends: false,
+            select: function(start, end) {
+              $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
+              $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
+            }
+          });
+      };
+    }
+
+    else if(loc == 'lathe1'){
+      initialize_calendar = function() {
+        $('.calendar_lathe1_book').fullCalendar({
+            defaultView: 'agendaWeek',
+            events: gon.bookings["lathe1"],
+            height: 'auto',
+            minTime: '08:00:00',
+            maxTime: '17:00:00',
+            slotMinutes: 30,
+            slotDuration: '00:30:00',
+            allDaySlot: false,
+            selectable: true,
+            selectHelper: true,
+            eventLimit: true,
+            selectOverlap: false,
+            hiddenDays: [0],
+            firstDay: 1,
+
+            validRange: function(nowDate) {
+                return {
+                  start: nowDate.clone().subtract(1, 'days'),
+                };
+            },
+            selectAllow: function(selectInfo) {
+                     var duration = moment.duration(selectInfo.end.diff(selectInfo.start));
+                     return duration.asHours() <= 3;
+            },
+            // weekends: false,
+            select: function(start, end) {
+              $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
+              $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
+            }
+          });
+      };
+    }
+
+    else if(loc == 'lathe2'){
+      initialize_calendar = function() {
+        $('.calendar_lathe2_book').fullCalendar({
+            defaultView: 'agendaWeek',
+            events: gon.bookings["lathe2"],
+            height: 'auto',
+            minTime: '08:00:00',
+            maxTime: '17:00:00',
+            slotMinutes: 30,
+            slotDuration: '00:30:00',
+            allDaySlot: false,
+            selectable: true,
+            selectHelper: true,
+            eventLimit: true,
+            selectOverlap: false,
+            hiddenDays: [0],
+            firstDay: 1,
+
+            validRange: function(nowDate) {
+                return {
+                  start: nowDate.clone().subtract(1, 'days'),
+                };
+            },
+            selectAllow: function(selectInfo) {
+                     var duration = moment.duration(selectInfo.end.diff(selectInfo.start));
+                     return duration.asHours() <= 3;
+            },
+            // weekends: false,
+            select: function(start, end) {
+              $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
+              $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
+            }
+          });
+      };
+    }
+
+    else if(loc == 'welding1'){
+      initialize_calendar = function() {
+        $('.calendar_welding1_book').fullCalendar({
+            defaultView: 'agendaWeek',
+            events: gon.bookings["welding1"],
+            height: 'auto',
+            minTime: '08:00:00',
+            maxTime: '17:00:00',
+            slotMinutes: 30,
+            slotDuration: '00:30:00',
+            allDaySlot: false,
+            selectable: true,
+            selectHelper: true,
+            eventLimit: true,
+            selectOverlap: false,
+            hiddenDays: [0],
+            firstDay: 1,
+
+            validRange: function(nowDate) {
+                return {
+                  start: nowDate.clone().subtract(1, 'days'),
+                };
+            },
+            selectAllow: function(selectInfo) {
+                     var duration = moment.duration(selectInfo.end.diff(selectInfo.start));
+                     return duration.asHours() <= 3;
+            },
+            // weekends: false,
+            select: function(start, end) {
+              $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
+              $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
+            }
+          });
+      };
+    }
+
+    else if(loc == 'welding2'){
+      initialize_calendar = function() {
+        $('.calendar_welding2_book').fullCalendar({
+            defaultView: 'agendaWeek',
+            events: gon.bookings["welding2"],
+            height: 'auto',
+            minTime: '08:00:00',
+            maxTime: '17:00:00',
+            slotMinutes: 30,
+            slotDuration: '00:30:00',
+            allDaySlot: false,
+            selectable: true,
+            selectHelper: true,
+            eventLimit: true,
+            selectOverlap: false,
+            hiddenDays: [0],
+            firstDay: 1,
+
+            validRange: function(nowDate) {
+                return {
+                  start: nowDate.clone().subtract(1, 'days'),
+                };
+            },
+            selectAllow: function(selectInfo) {
+                     var duration = moment.duration(selectInfo.end.diff(selectInfo.start));
+                     return duration.asHours() <= 3;
+            },
+            // weekends: false,
+            select: function(start, end) {
+              $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
+              $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
+            }
+          });
+      };
+    }
+
     $(document).on('turbolinks:load', initialize_calendar);
-    $(document).ready(function() {
-      $('#booking_location').change(function() {
-        var selected_location = this.value;
-        console.log(selected_location);
-        if(selected_location=="makerspace") {
-          calendar_event = gon.bookings["makerspace"];
-          $('.calendar').fullCalendar('removeEvents');
-          $('.calendar').fullCalendar('addEventSource', calendar_event);
-          $('.calendar').fullCalendar('rerenderEvents');
-        }
-        else if(selected_location=="makerlab") {
-          calendar_event = gon.bookings["makerlab"];
-          $('.calendar').fullCalendar('removeEvents');
-          $('.calendar').fullCalendar('addEventSource', calendar_event);
-          $('.calendar').fullCalendar('rerenderEvents');
-        }
-        else if(selected_location=="makerlounge") {
-          calendar_event = gon.bookings["makerlounge"];
-          $('.calendar').fullCalendar('removeEvents');
-          $('.calendar').fullCalendar('addEventSource', calendar_event);
-          $('.calendar').fullCalendar('rerenderEvents');
-        }
-        else if(selected_location=="brunsfield") {
-          calendar_event = gon.bookings["brunsfield"];
-          $('.calendar').fullCalendar('removeEvents');
-          $('.calendar').fullCalendar('addEventSource', calendar_event);
-          $('.calendar').fullCalendar('rerenderEvents');
-        }
-        else if(selected_location=="sandbox") {
-          calendar_event = gon.bookings["sandbox"];
-          $('.calendar').fullCalendar('removeEvents');
-          $('.calendar').fullCalendar('addEventSource', calendar_event);
-          $('.calendar').fullCalendar('rerenderEvents');
-        }
-      });
-    });
+
+  });

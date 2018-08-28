@@ -7,27 +7,52 @@ html
     script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"
     script language="JavaScript" type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"
     link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet"
+    link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"
     = csrf_meta_tags
     = stylesheet_link_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css","application", :media => "all"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = favicon_link_tag 'site-icon.png'
 
   body
     nav.site-header.sticky-top.py-1
       .container.d-flex.flex-column.flex-md-row.justify-content-between
-        a.py-2.d-none.d-md-inline-block.site-logo href="/home/index" MakerRoom
+        / a.py-2.d-none.d-md-inline-block.fas.fa-door-open href="/"
+        a.py-2.d-none.d-lg-inline-block.site-logo href="/" <i class="fas fa-door-open"></i> Maker<b>Room</b>
         a.py-2.d-none.d-md-inline-block href="/rooms/makerspace" data-turbolinks="false" Makerspace
-        a.py-2.d-none.d-md-inline-block href="/rooms/makerlab" data-turbolinks="false" Makerlab
-        a.py-2.d-none.d-md-inline-block href="/rooms/makerlounge" data-turbolinks="false" Makerlounge
-        a.py-2.d-none.d-md-inline-block href="/rooms/brunsfield" data-turbolinks="false" Brunsfield Center
+
+        .dropdown
+          a.dropdown-toggle.py-2.d-none.d-md-inline-block href="javascript:void(0)" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" Makerlab
+          .dropdown-menu aria-labelledby="dropdownMenuButton"
+           = link_to 'Makerlab 119', rooms_makerlab119_path, class: "dropdown-item dropdown-link"
+           = link_to 'Makerlab 121', rooms_makerlab121_path, class: "dropdown-item dropdown-link"
+
+        .dropdown
+          a.dropdown-toggle.py-2.d-none.d-md-inline-block href="javascript:void(0)" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" Brunsfield Center
+          .dropdown-menu aria-labelledby="dropdownMenuButton2"
+            = link_to 'Mill 1', rooms_mill1_path, class: "dropdown-item dropdown-link"
+            = link_to 'Lathe 1', rooms_lathe1_path, class: "dropdown-item dropdown-link"
+            = link_to 'Lathe 2', rooms_lathe2_path, class: "dropdown-item dropdown-link"
+            = link_to 'Welding 1', rooms_welding1_path, class: "dropdown-item dropdown-link"
+            = link_to 'Welding 2', rooms_welding2_path, class: "dropdown-item dropdown-link"
+
         a.py-2.d-none.d-md-inline-block href="/rooms/sandbox" data-turbolinks="false" Sandbox
+        a.py-2.d-none.d-md-inline-block href="/rooms/trailer" data-turbolinks="false" CEED Trailer
+        .dropdown
+          a.dropdown-toggle.py-2.d-none.d-md-inline-block href="javascript:void(0)" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" Meeting Room
+          .dropdown-menu aria-labelledby="dropdownMenuButton"
+           = link_to 'STEM 124', rooms_makerlab119_path, class: "dropdown-item dropdown-link"
+           = link_to 'STEM 126', rooms_makerlab121_path, class: "dropdown-item dropdown-link"
+
+
         - if user_signed_in?
-          = link_to 'Bookings', bookings_path, class: "py-2 d-none d-md-inline-block center-icon"
           .dropdown
             button.dropdown-toggle.py-2.d-none.d-md-inline-block.center-icon.profile-icon type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: none; border: 0;"
               i.far.fa-user-circle.fa-lg
             .dropdown-menu aria-labelledby="dropdownMenuButton"
               = link_to 'Profile', edit_user_path, class: "dropdown-item dropdown-link"
+              -if current_user.admin?
+                = link_to 'Bookings', bookings_path, class: "dropdown-item dropdown-link"
               = link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item dropdown-link"
         - else
           = link_to new_user_session_path, class: "py-2 d-none d-md-inline-block center-icon" do

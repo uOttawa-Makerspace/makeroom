@@ -4,8 +4,113 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-# one: {}
-# # column: value
-# #
-# two: {}
-# # column: value
+booking1:
+  id: 1
+  name: Sam
+  email: sam@gmail.com
+  event_name: Makerspace
+  location: makerspace
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  approved: true
+  user_id: 1
+
+booking2:
+  id: 2
+  name: Alex
+  email: Alex@gmail.com
+  event_name: Makerlab119
+  location: makerlab119
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 15, min: 00) %>
+  approved: true
+  user_id: 1
+
+booking3:
+  id: 3
+  name: Abby
+  email: Abby@gmail.com
+  event_name: Makerlab121
+  location: makerlab121
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 10, min: 00) %>
+  approved: true
+  user_id: 1
+
+booking4:
+  id: 4
+  name: Betty
+  email: betty@gmail.com
+  event_name: Sandbox
+  location: sandbox
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 10, min: 00) %>
+  approved: true
+  user_id: 1
+
+booking5:
+  id: 5
+  name: Cindy
+  email: cindy@gmail.com
+  event_name: Trailer
+  location: trailer
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 10, min: 00) %>
+  approved: true
+  user_id: 1
+
+booking6:
+  id: 6
+  name: Dexter
+  email: dexter@gmail.com
+  event_name: Mill1
+  location: mill1
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 10, min: 00) %>
+  approved: true
+  user_id: 1
+
+booking7:
+  id: 7
+  name: Fred
+  email: fred@gmail.com
+  event_name: Lathe1
+  location: lathe1
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 10, min: 00) %>
+  approved: true
+  user_id: 2
+
+
+booking8:
+  id: 8
+  name: Eddie
+  email: eddie@gmail.com
+  event_name: Welding1
+  location: welding1
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 10, min: 00) %>
+  approved: true
+  user_id: 2
+
+booking9:
+  id: 9
+  name: George
+  email: george@gmail.com
+  event_name: Welding2
+  location: welding2
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 10, min: 00) %>
+  approved: true
+  user_id: 2
+
+booking10:
+  id: 10
+  name: Haily
+  email: haily@gmail.com
+  event_name: Lathe2
+  location: lathe2
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 10, min: 00) %>
+  approved: true
+  user_id: 2
