@@ -1,19 +1,20 @@
 .starter-template
-  h1 Sandbox
+  h1 Makerlab 121
   -if @current_user
-    = link_to "New Booking", new_booking_path(:location => "sandbox"), class: "btn btn-blue"
+    = link_to "New Booking", new_booking_path(:location => "makerlab121"), class: "btn btn-blue"
 
   br
   br
   br
-  .calendar_sandbox
+
+  .calendar_makerlab121
 
 javascript:
   var initialize_calendar;
     initialize_calendar = function() {
-      $('.calendar_sandbox').fullCalendar({
+      $('.calendar_makerlab121').fullCalendar({
           defaultView: 'agendaWeek',
-          events: '/rooms/sandbox.json',
+          events: '/rooms/makerlab121.json',
           height: '100',
           minTime: '8:00:00',
           maxTime: '23:00:00',

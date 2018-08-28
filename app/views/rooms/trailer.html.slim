@@ -1,24 +1,24 @@
 .starter-template
-  h1 Sandbox
+  h1 CEED Trailer
   -if @current_user
-    = link_to "New Booking", new_booking_path(:location => "sandbox"), class: "btn btn-blue"
+    = link_to "New Booking", new_booking_path(:location => "trailer"), class: "btn btn-blue"
 
   br
   br
   br
-  .calendar_sandbox
+  .calendar_trailer
 
 javascript:
   var initialize_calendar;
     initialize_calendar = function() {
-      $('.calendar_sandbox').fullCalendar({
+      $('.calendar_trailer').fullCalendar({
           defaultView: 'agendaWeek',
-          events: '/rooms/sandbox.json',
+          events: '/rooms/trailer.json',
           height: '100',
-          minTime: '8:00:00',
-          maxTime: '23:00:00',
+          minTime: '00:00:00',
+          maxTime: '23:59:59',
           slotDuration: '00:15:00',
-          allDaySlot: false,
+          allDaySlot: true,
           selectable: false,
           selectHelper: true,
           eventLimit: true,

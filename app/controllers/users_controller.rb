@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    @bookings = @user.bookings.order("id DESC").paginate(page: params[:page], per_page: 10)
     if @user.organization_id.present?
       @user_organization_id = @user.organization_id
     else

@@ -1,26 +1,31 @@
 h1 Bookings
-= link_to "New Booking", new_booking_path, class: "btn btn-blue"
 table.table style="margin-top: 1rem"
   thead
     tr
       th Name
+      th Event Name
       th Location
       th Date & Time
+      th Repeat
+      th frequency
       th Approved
       th colspan="3"
   tbody
     - @bookings.each do |booking|
       tr
         td = (booking.name)
+        td = (booking.event_name)
         td = (booking.location_humanize)
         td = (booking.date_humanize)
+        td = (booking.repeat ? "Yes" : "No")
+        td = (booking.frequency)
         td = (booking.approved ? "Yes" : "No")
         td.button-col
           = link_to 'View', booking, class: 'btn btn-blue'
         - if current_user.admin?
           td.button-col
             - if !booking.approved
-              = link_to 'Approve', approve_booking_path(id: booking.id), method: :post, class: 'btn btn-blue'
+              = link_to 'Approve', approve_booking_path(id: booking.id), method: :post, class: 'btn btn-green'
             - if booking.approved
               = link_to 'Disapprove', disapprove_booking_path(id: booking.id), method: :post, class:'btn btn-blue'
           td.button-col
