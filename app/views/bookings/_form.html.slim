@@ -18,13 +18,24 @@
   .row
     .col-xs-12.col-sm-6.form-group
       = f.input :event_name, as: :string, label: false, placeholder: "Event Name", input_html: { class: 'form-control'}
-  / .row
-    / .col-xs-12.col-sm-6.form-group
-    /   = f.input :location, label: false, collection: @locations, prompt: "Select Location", input_html: { class: 'custom-select'}
 
   .row.hide
     .col-xs-12.col-sm-6.form-group
       = f.input :location, as: :string, label: false, readonly: true, input_html: { class: 'form-control', id: 'location'}
+
+  .row
+    .col-xs-12.col-sm-6.form-group
+        = f.label :repeat
+        = f.check_box :repeat, onclick: "toggleVisibility();", input_html: { class: 'form-control'}
+
+  #hidden style="display: none"
+    .row
+      .col-xs-12.col-sm-6.form-group
+        =f.input :frequency, as: :select, collection: Booking.frequencies.keys, label: false, input_html: { class: 'form-control'}
+
+    .row
+      .col-xs-12.col-sm-6.form-group
+        =f.input :until_date, type: :date,  input_html: { class: 'form-control'}
   br
   h3 Select Date & Time
   .bar-row
@@ -416,4 +427,5 @@ javascript:
     }
 
     $(document).on('turbolinks:load', initialize_calendar);
+
   });

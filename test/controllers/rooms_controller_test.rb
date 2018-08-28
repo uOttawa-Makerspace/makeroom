@@ -6,18 +6,48 @@ class RoomsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get makerlab" do
-    get rooms_makerlab_url
+  test "should get makerlab119" do
+    get rooms_makerlab119_url
     assert_response :success
   end
 
-  test "should get makerlounge" do
-    get rooms_makerlounge_url
+  test "should get makerlab121" do
+    get rooms_makerlab121_url
     assert_response :success
   end
 
-  test "should get brunsfield" do
-    get rooms_brunsfield_url
+  test "should get mill1" do
+    get rooms_mill1_url
+    assert_response :success
+  end
+
+  test "should get lathe1" do
+    get rooms_lathe1_url
+    assert_response :success
+  end
+
+  test "should get lathe2" do
+    get rooms_lathe2_url
+    assert_response :success
+  end
+
+  test "should get welding1" do
+    get rooms_welding1_url
+    assert_response :success
+  end
+
+  test "should get welding2" do
+    get rooms_welding2_url
+    assert_response :success
+  end
+
+  test "should get sandbox" do
+    get rooms_sandbox_url
+    assert_response :success
+  end
+
+  test "should get trailer" do
+    get rooms_trailer_url
     assert_response :success
   end
 

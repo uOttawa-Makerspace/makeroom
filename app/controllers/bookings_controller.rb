@@ -9,40 +9,40 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
-    @makerspace_bookings = Booking.where(location: Booking.locations[:makerspace])
-    @makerlab119_bookings = Booking.where(location: Booking.locations[:makerlab119])
-    @makerlab121_bookings = Booking.where(location: Booking.locations[:makerlab121])
-    @mill1_bookings = Booking.where(location: Booking.locations[:mill1])
-    @lathe1_bookings = Booking.where(location: Booking.locations[:lathe1])
-    @lathe2_bookings = Booking.where(location: Booking.locations[:lathe2])
-    @welding1_bookings = Booking.where(location: Booking.locations[:welding1])
-    @welding2_bookings = Booking.where(location: Booking.locations[:welding2])
-    @sandbox_bookings = Booking.where(location: Booking.locations[:sandbox])
-    @trailer_bookings = Booking.where(location: Booking.locations[:trailer])
+    if params[:location] == "makerspace"
+      @makerspace_bookings = Booking.where(location: Booking.locations[:makerspace]).flat_map{ |e| e.calendar_event}
+    elsif params[:location] == "makerlab119"
+      @makerlab119_bookings = Booking.where(location: Booking.locations[:makerlab119]).flat_map{ |e| e.calendar_event}
+    elsif params[:location] == "makerlab121"
+      @makerlab121_bookings = Booking.where(location: Booking.locations[:makerlab121]).flat_map{ |e| e.calendar_event}
+    elsif params[:location] == "mill1"
+      @mill1_bookings = Booking.where(location: Booking.locations[:mill1]).flat_map{ |e| e.calendar_event}
+    elsif params[:location] == "lathe1"
+      @lathe1_bookings = Booking.where(location: Booking.locations[:lathe1]).flat_map{ |e| e.calendar_event}
+    elsif params[:location] == "lathe2"
+      @lathe2_bookings = Booking.where(location: Booking.locations[:lathe2]).flat_map{ |e| e.calendar_event}
+    elsif params[:location] == "welding1"
+      @welding1_bookings = Booking.where(location: Booking.locations[:welding1]).flat_map{ |e| e.calendar_event}
+    elsif params[:location] == "welding2"
+      @welding2_bookings = Booking.where(location: Booking.locations[:welding2]).flat_map{ |e| e.calendar_event}
+    elsif params[:location] == "sandbox"
+      @sandbox_bookings = Booking.where(location: Booking.locations[:sandbox]).flat_map{ |e| e.calendar_event}
+    elsif params[:location] == "trailer"
+      @trailer_bookings = Booking.where(location: Booking.locations[:trailer]).flat_map{ |e| e.calendar_event}
+    end
 
-    # @locations = Booking.location_list.map {|k,v| [v,k]}
-    # if params[:location].present?
-    # binding.pry
     @booking[:location] = params[:location]
-    # binding.pry
     @location = params[:location]
-    # end
-    # if current_user.role == 'brunsfield'
-    #   @locations = [["Brunsfield",'brunsfield']]
-    # elsif current_user.role == 'sandbox'
-    #   @locations = [["Sandbox",'sandbox']]
-    # end
     gon.jbuilder template: 'app/views/bookings/index.json.jbuilder', as: :bookings
   end
 
   def create
     @booking = Booking.new(booking_params)
+    if @booking.repeating? && @booking[:start_date].present?
+      @booking[:anchor] = @booking[:start_date].to_date.to_s
+    end
     @booking.user_id = current_user.id
-    # if current_user.role == 'brunsfield' || current_user.role == 'sandbox'
-    #   @booking.approved = true
-    # else
-    #   @booking.approved = false
-    # end
+    @booking.approved = false
     if @booking.save
       flash[:notice] = "Event created successfully!"
       redirect_to root_path
@@ -60,7 +60,6 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
-
   end
 
   def approve
@@ -95,6 +94,6 @@ class BookingsController < ApplicationController
 
 private
   def booking_params
-    params.require(:booking).permit(:name, :email, :event_name, :location, :start_date, :end_date)
+    params.require(:booking).permit(:name, :email, :event_name, :location, :start_date, :end_date, :repeat, :frequency, :anchor, :until_date)
   end
 end

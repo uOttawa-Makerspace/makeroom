@@ -19,3 +19,13 @@
 //= require fullcalendar/gcal
 //= require turbolinks
 //= require_tree .
+
+function toggleVisibility(){
+    var checkBox = document.getElementById("booking_repeat");
+    var extraInfo = document.getElementById("hidden");
+    if (checkBox.checked == true){
+      extraInfo.style.display = "block";
+    } else {
+      extraInfo.style.display = "none";
+    }
+}
