@@ -19,14 +19,18 @@ ActiveRecord::Schema.define(version: 20180828020403) do
     t.string "name"
     t.string "email"
     t.string "event_name"
-    t.string "staff_id"
-    t.string "staff_name"
     t.integer "location"
     t.boolean "approved"
     t.datetime "start_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "end_date"
+    t.bigint "user_id"
+    t.boolean "repeat", default: false
+    t.integer "frequency", limit: 2, default: 0
+    t.date "anchor"
+    t.date "until_date"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "organizations", force: :cascade do |t|
