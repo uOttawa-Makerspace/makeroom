@@ -8,7 +8,6 @@ table.table style="margin-top: 1rem"
       th Location
       th Date & Time
       th Repeat
-      th frequency
       th Approved
       th colspan="3"
   tbody
@@ -19,7 +18,6 @@ table.table style="margin-top: 1rem"
         td = (booking.event_name)
         td = (booking.location_humanize)
         td = (booking.date_humanize)
-        td = (booking.repeat ? "Yes" : "No")
         td = (booking.frequency)
         td = (booking.approved ? "Yes" : "No")
         td.button-col
@@ -30,14 +28,8 @@ table.table style="margin-top: 1rem"
               = link_to 'Approve', approve_booking_path(id: booking.id), method: :post, class: 'btn btn-green'
             - if booking.approved
               = link_to 'Disapprove', disapprove_booking_path(id: booking.id), method: :post, class:'btn btn-blue'
-          td.button-col
-            = link_to 'Delete', booking, method: 'delete', class: 'btn btn-red'
-        - if booking.location == 'brunsfield' && current_user.role == 'brunsfield'
-          td.button-col
-            = link_to 'Delete', booking, method: 'delete', class: 'btn btn-red'
-        - if booking.location == 'sandbox' && current_user.role == 'sandbox'
-          td.button-col
-            = link_to 'Delete', booking, method: 'delete', class: 'btn btn-red'
+        td.button-col
+          = link_to 'Delete', booking, method: 'delete', class: 'btn btn-red'
 
 div
   = will_paginate @bookings, :container => false
