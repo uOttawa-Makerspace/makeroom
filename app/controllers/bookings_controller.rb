@@ -29,6 +29,10 @@ class BookingsController < ApplicationController
       @sandbox_bookings = Booking.where(location: Booking.locations[:sandbox]).flat_map{ |e| e.calendar_event}
     elsif params[:location] == "trailer"
       @trailer_bookings = Booking.where(location: Booking.locations[:trailer]).flat_map{ |e| e.calendar_event}
+    elsif params[:location] == "stem124"
+      @stem124_bookings = Booking.where(location: Booking.locations[:stem124]).flat_map{ |e| e.calendar_event}
+    elsif params[:location] == "stem126"
+      @stem126_bookings = Booking.where(location: Booking.locations[:stem126]).flat_map{ |e| e.calendar_event}
     end
 
     @booking[:location] = params[:location]
