@@ -1,0 +1,41 @@
+.starter-template
+  h1 STEM 124
+  -if @current_user
+    = link_to "New Booking", new_booking_path(:location => "stem124"), class: "btn btn-blue"
+
+  br
+  br
+  br
+
+  .calendar_stem124
+
+javascript:
+  var initialize_calendar;
+    initialize_calendar = function() {
+      $('.calendar_stem124').fullCalendar({
+          defaultView: 'agendaWeek',
+          events: '/rooms/stem124.json',
+          height: '100',
+          minTime: '8:00:00',
+          maxTime: '23:00:00',
+          slotDuration: '00:15:00',
+          allDaySlot: false,
+          selectable: false,
+          selectHelper: true,
+          eventLimit: true,
+          firstDay: 1,
+          nowIndicator: true,
+          eventRender: function(event, element)
+          {
+              element.find('.fc-title').append("<br/>" + event.name + "<br/>" + event.username);
+          },
+
+          header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'agendaDay,agendaWeek,month'
+          },
+
+        });
+    };
+    $(document).on('turbolinks:load', initialize_calendar);
