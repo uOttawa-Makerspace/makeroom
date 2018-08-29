@@ -23,17 +23,19 @@ h3 Your Bookings
 table.table style="margin-top: 1rem"
   thead
     tr
-      th Name
+      th Event Name
       th Location
       th Date & Time
+      th Repeat
       th Approved
       th colspan="3" Actions
       tbody
         - @bookings.each do |booking|
           tr
-            td = (booking.name)
+            td = (booking.event_name)
             td = (booking.location_humanize)
             td = (booking.date_humanize)
+            td = (booking.frequency)
             td = (booking.approved ? "Yes" : "No")
             td.button-col
               = link_to 'View', booking, class: 'btn btn-blue'

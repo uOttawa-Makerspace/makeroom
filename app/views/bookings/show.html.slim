@@ -4,6 +4,11 @@ h3 Booking Details
   .col-xs-12.col-sm-6
     .subtitle = ("Name")
     span.offerValue = (@booking.name)
+
+.row
+  .col-xs-12.col-sm-6
+    .subtitle = ("Username")
+    span.offerValue = (@booking.user.username)
 .row
   .col-xs-12.col-sm-6
     .subtitle = ("Email")
@@ -20,4 +25,14 @@ h3 Booking Details
   .col-xs-12.col-sm-6
     .subtitle = ("Date & Time")
     span.offerValue = (@booking.date_humanize)
+
 .row
+  -if @booking.repeat
+      .col-xs-12.col-sm-6
+        .subtitle = ("Repeat")
+        span.offerValue = (@booking.frequency)
+.row
+  -if @booking.repeat
+      .col-xs-12.col-sm-6
+        .subtitle = ("Until")
+        span.offerValue = (@booking.until_date.strftime('%a, %d %b %Y'))
