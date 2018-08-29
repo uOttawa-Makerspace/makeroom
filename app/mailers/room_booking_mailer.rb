@@ -4,7 +4,7 @@ class RoomBookingMailer < ApplicationMailer
     @email = email
     @location = booking.location_humanize
     @url = "http://makerroom.herokuapp.com"
-    mail(to: email, subject: "Makeroom - New booking pending approval")
+    mail(to: "parastoo.ss@gmail.com", subject: "Makeroom - New booking pending approval")
   end
 
   def booking_confirmation(booking)
@@ -19,7 +19,7 @@ class RoomBookingMailer < ApplicationMailer
     @frequency = booking.frequency
     @until_date = booking.until_date
 
-    mail(to: @email, subject: "Makeroom - Your booking has been placed")
+    mail(to: "parastoo.ss@gmail.com", subject: "Makeroom - Your booking has been placed")
   end
 
 
@@ -34,7 +34,7 @@ class RoomBookingMailer < ApplicationMailer
     @repeat = booking.repeat
     @frequency = booking.frequency
     @until_date = booking.until_date
-    mail(to: @email, subject: "Makeroom - Your booking request has been accepted.")
+    mail(to: "parastoo.ss@gmail.com", subject: "Makeroom - Your booking request has been accepted.")
 
   end
 end
