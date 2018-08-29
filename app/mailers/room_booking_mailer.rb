@@ -2,7 +2,7 @@ class RoomBookingMailer < ApplicationMailer
   def new_booking_notification(booking , email)
     @booking = booking
     @email = email
-    @location = booking.location
+    @location = booking.location_humanize
     @url = "http://makerroom.herokuapp.com"
     mail(to: email, subject: "Makeroom - New booking pending approval")
   end
@@ -11,7 +11,7 @@ class RoomBookingMailer < ApplicationMailer
     @email = booking.email
     @name = booking.name
     @event_name = booking.name
-    @location = booking.location
+    @location = booking.location_humanize
     @url = "http://makerroom.herokuapp.com"
     @start_date = booking.start_date
     @end_date = booking.end_date
@@ -28,7 +28,7 @@ class RoomBookingMailer < ApplicationMailer
     @email = booking.email
     @name = booking.name
     @event_name = booking.name
-    @location = booking.location
+    @location = booking.location_humanize
     @start_date = booking.start_date
     @end_date = booking.end_date
     @repeat = booking.repeat
