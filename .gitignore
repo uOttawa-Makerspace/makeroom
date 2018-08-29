@@ -21,3 +21,4 @@
 .idea
 .generators
 .DS_Store
+/.secret.sh
