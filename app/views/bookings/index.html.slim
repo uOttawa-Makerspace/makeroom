@@ -3,6 +3,7 @@ table.table style="margin-top: 1rem"
   thead
     tr
       th Name
+      th Username
       th Event Name
       th Location
       th Date & Time
@@ -14,6 +15,7 @@ table.table style="margin-top: 1rem"
     - @bookings.each do |booking|
       tr
         td = (booking.name)
+        td = (booking.user.username)
         td = (booking.event_name)
         td = (booking.location_humanize)
         td = (booking.date_humanize)
