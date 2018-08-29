@@ -1,0 +1,27 @@
+<section style="padding-left: 8vw;padding-top: 5vw;">
+<p style="font: 400 1.3em 'Raleway', sans-serif;color: #333;"><h1>
+    Your booking request has been placed.
+ </h1>
+</p>
+
+<p style="font: 400 1.1em 'Raleway', sans-serif;color: #333; line-height: 35px;">
+  Your booking request for <%= @location.humanize %> has been placed. The booking is pending approval from the CEED administration. Please review the details
+  of your booking below and if you decide to cancel your request, you can do so by visiting your Profile on <%= link_to 'Makeroom', @url %>.
+  <br><br>
+  <b>Booking Details:</b>
+  <br>
+  <b> Name: </b><%= @name %><br>
+  <b> Location: </b><%= @location.humanize%><br>
+  <b> Start: </b><%= @start_date.strftime('%a, %d %b %Y %H:%M')%><br>
+  <b> End: </b><%= @end_date.strftime('%a, %d %b %Y %H:%M')%><br>
+  <% if @repeat %>
+    <b> Repeat: </b><%= @frequency%><br>
+    <b> Until: </b><%= @until_date.strftime('%a, %d %b %Y')%><br>
+  <%end%>
+</p>
+<br>
+<p style="  font: 400 1.1em 'Raleway', sans-serif;color: #333;">
+  Cheers,<br>
+  The Makeroom Team
+</p>
+</section>
