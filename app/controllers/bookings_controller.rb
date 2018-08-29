@@ -64,7 +64,7 @@ class BookingsController < ApplicationController
 
     if @booking.save
       RoomBookingMailer.new_booking_notification(@booking, @email).deliver_now
-      RoomBookingMailer.booking_confirmation(@booking).deliver_now
+      # RoomBookingMailer.booking_confirmation(@booking).deliver_now
       flash[:notice] = "Event created successfully!"
       redirect_to root_path
     else

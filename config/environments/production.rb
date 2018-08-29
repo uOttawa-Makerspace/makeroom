@@ -95,9 +95,10 @@ Rails.application.configure do
   #GMAIL SETUP
   config.action_mailer.smtp_settings = {
     :address => "smtp.sendgrid.net",
-    :port => 587,
+    :port => 2525,
     :user_name => Rails.application.secrets.smtp_user,
     :password => Rails.application.secrets.smtp_password,
+    :domain => 'http://makerroom.herokuapp.com',
     :authentication => 'plain',
     :enable_starttls_auto => true
   }
