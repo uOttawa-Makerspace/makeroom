@@ -19,6 +19,10 @@ Rails.application.routes.draw do
 
   get 'rooms/trailer'
 
+  get 'rooms/stem124'
+
+  get 'rooms/stem126'
+  
   resources :rooms
 
   devise_for :users

@@ -29,6 +29,10 @@ class BookingsController < ApplicationController
       @sandbox_bookings = Booking.where(location: Booking.locations[:sandbox]).flat_map{ |e| e.calendar_event}
     elsif params[:location] == "trailer"
       @trailer_bookings = Booking.where(location: Booking.locations[:trailer]).flat_map{ |e| e.calendar_event}
+    elsif params[:location] == "stem124"
+      @stem124_bookings = Booking.where(location: Booking.locations[:stem124]).flat_map{ |e| e.calendar_event}
+    elsif params[:location] == "stem126"
+      @stem126_bookings = Booking.where(location: Booking.locations[:stem126]).flat_map{ |e| e.calendar_event}
     end
 
     @booking[:location] = params[:location]
@@ -43,7 +47,24 @@ class BookingsController < ApplicationController
     end
     @booking.user_id = current_user.id
     @booking.approved = false
+
+    # TEST
+    @email = "parastoo.ss@gmail.com"
+    # if @booking.location == "makerspace"
+    #   @email = "makerlab@uOttawa.ca"
+    # elsif @booking.location == "makerlab119" || @booking.location == "makerlab121"
+    #   @email = "makerlab@uOttawa.ca"
+    # elsif @booking.location == "mill1" || @booking.location == "lathe1" || @booking.location == "lath2" || @booking.location == "welding1" || @booking.location == "welding2"
+    #   @email = "brunsfield@uOttawa.ca"
+    # elsif @booking.location == "sandbox"
+    #   @email = "sandbox@uOttawa.ca"
+    # else
+    #   @email = "Emilie.Salinas@uottawa.ca"
+    # end
+
     if @booking.save
+      RoomBookingMailer.new_booking_notification(@booking, @email).deliver_now
+      RoomBookingMailer.booking_confirmation(@booking).deliver_now
       flash[:notice] = "Event created successfully!"
       redirect_to root_path
     else
@@ -66,6 +87,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.approved = true
     if @booking.save
+      RoomBookingMailer.booking_approved(@booking).deliver_now
       redirect_to bookings_path
     else
       redirect_to bookings_path

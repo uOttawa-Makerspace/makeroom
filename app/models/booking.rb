@@ -20,7 +20,7 @@ class Booking < ApplicationRecord
     presence: {message: "Please provide the anchor date"}, if: :repeating?
 
 
-  enum location: %i[makerspace makerlab119 makerlab121 sandbox mill1 lathe1 lathe2 welding1 welding2 trailer]
+  enum location: %i[makerspace makerlab119 makerlab121 sandbox mill1 lathe1 lathe2 welding1 welding2 trailer stem124 stem126]
   enum frequency: {Never: 0, Daily: 1, Weekly: 2, Biweekly: 3, Monthly: 4, Annually: 5}
   def date_humanize
     start = I18n.l start_date, format: :short if start_date.present?
@@ -39,7 +39,9 @@ class Booking < ApplicationRecord
       lathe2: "Lathe 2",
       welding1: "Welding 1",
       welding2: "Welding 2",
-      trailer: "CEED Trailer"
+      trailer: "CEED Trailer",
+      stem124: "STEM 124",
+      stem126: "STEM 126"
     }
   end
 
@@ -54,7 +56,10 @@ class Booking < ApplicationRecord
       lathe2: "Lathe 2",
       welding1: "Welding 1",
       welding2: "Welding 2",
-      trailer: "CEED Trailer"
+      trailer: "CEED Trailer",
+      stem124: "STEM 124",
+      stem126: "STEM 126"
+
     }
     all_locations_list[location.to_sym]
   end
@@ -91,11 +96,9 @@ class Booking < ApplicationRecord
       end_frequency = self.until_date
       schedule(start_frequency).occurrences(end_frequency).map do |date|
         Booking.new(id: id, name: name, email: email, event_name: event_name, location: location, start_date: self.start_date.change(year: date.year, month: date.month, day: date.day),
-        end_date: self.end_date.change(year: date.year, month: date.month, day: date.day), approved: approved)
+        end_date: self.end_date.change(year: date.year, month: date.month, day: date.day), approved: approved, user_id: user_id)
       end
     end
   end
-
-
 
 end

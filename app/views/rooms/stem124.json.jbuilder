@@ -1,4 +1,4 @@
-welding1_events = json.array!(@welding1_bookings) do |booking|
+stem124_events = json.array!(@stem124_bookings) do |booking|
   json.id booking.id
   json.username booking.user.username
   json.name booking.name
@@ -12,4 +12,4 @@ welding1_events = json.array!(@welding1_bookings) do |booking|
   end
 end
 
-welding1_events
+stem124_events

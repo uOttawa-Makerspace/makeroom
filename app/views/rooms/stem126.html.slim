@@ -1,18 +1,20 @@
 .starter-template
-  h1 Makerlab 119
+  h1 STEM 126
   -if @current_user
-    = link_to "New Booking", new_booking_path(:location => "makerlab119"), class: "btn btn-blue"
+    = link_to "New Booking", new_booking_path(:location => "stem126"), class: "btn btn-blue"
+
   br
   br
   br
-  .calendar_makerlab119
+
+  .calendar_stem126
 
 javascript:
   var initialize_calendar;
     initialize_calendar = function() {
-      $('.calendar_makerlab119').fullCalendar({
+      $('.calendar_stem126').fullCalendar({
           defaultView: 'agendaWeek',
-          events: '/rooms/makerlab119.json',
+          events: '/rooms/stem126.json',
           height: '100',
           minTime: '8:00:00',
           maxTime: '23:00:00',
@@ -36,4 +38,5 @@ javascript:
 
         });
     };
+
     $(document).on('turbolinks:load', initialize_calendar);

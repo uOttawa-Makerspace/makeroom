@@ -114,3 +114,25 @@ booking10:
   end_date: <%= DateTime.now.change(hour: 10, min: 00) %>
   approved: true
   user_id: 2
+
+booking11:
+  id: 11
+  name: Ian
+  email: ian@gmail.com
+  event_name: STEM124
+  location: stem124
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 10, min: 00) %>
+  approved: true
+  user_id: 2
+
+booking12:
+  id: 12
+  name: Jimmy
+  email: jimmy@gmail.com
+  event_name: STEM126
+  location: stem126
+  start_date: <%= DateTime.now.change(hour: 8, min: 00) %>
+  end_date: <%= DateTime.now.change(hour: 10, min: 00) %>
+  approved: true
+  user_id: 2

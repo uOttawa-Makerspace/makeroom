@@ -2,7 +2,7 @@
   = f.error_notification
   .row
     .col-xs-12.col-sm-6.location_title
-      = @location.humanize
+      = @booking.location_humanize
   br
   h3 Details
   h5 Please provide all the requested information below. Select the date and time of your booking by selecting the calendar.
@@ -70,6 +70,10 @@
       .calendar_welding2_book
     -elsif @location == "trailer"
       .calendar_trailer_book
+    -elsif @location == "stem124"
+      .calendar_stem124_book
+    -elsif @location == "stem126"
+      .calendar_stem126_book
 
 
   br
@@ -79,7 +83,6 @@ javascript:
   var initialize_calendar;
   var calendar_event;
   var loc = document.getElementById('location').value;
-
   $(document).ready(function() {
     // calendar_event = gon.bookings["makerspace"];
     if(loc == 'makerspace'){
@@ -98,15 +101,18 @@ javascript:
             eventLimit: true,
             selectOverlap: false,
             firstDay: 1,
+            nowIndicator: true,
+            eventRender: function(event, element)
+            {
+                element.find('.fc-title').append("<br/>" + event.name + "<br/>" + event.username);
+            },
             events: [
-
               {
                 dow: [0],
                 start: '11:00',
                 end: '17:00',
                 rendering: 'background'
               }
-
             ],
             eventSources: [
               '/rooms/makerspace.json'
@@ -139,6 +145,11 @@ javascript:
             eventLimit: true,
             selectOverlap: false,
             firstDay: 1,
+            nowIndicator: true,
+            eventRender: function(event, element)
+            {
+                element.find('.fc-title').append("<br/>" + event.name + "<br/>" + event.username);
+            },
 
             validRange: function(nowDate) {
                 return {
@@ -169,6 +180,11 @@ javascript:
             eventLimit: true,
             selectOverlap: false,
             firstDay: 1,
+            nowIndicator: true,
+            eventRender: function(event, element)
+            {
+                element.find('.fc-title').append("<br/>" + event.name + "<br/>" + event.username);
+            },
 
             validRange: function(nowDate) {
                 return {
@@ -200,6 +216,11 @@ javascript:
             eventLimit: true,
             selectOverlap: false,
             firstDay: 1,
+            nowIndicator: true,
+            eventRender: function(event, element)
+            {
+                element.find('.fc-title').append("<br/>" + event.name + "<br/>" + event.username);
+            },
 
             validRange: function(nowDate) {
                 return {
@@ -231,6 +252,11 @@ javascript:
             eventLimit: true,
             selectOverlap: false,
             firstDay: 1,
+            nowIndicator: true,
+            eventRender: function(event, element)
+            {
+                element.find('.fc-title').append("<br/>" + event.name + "<br/>" + event.username);
+            },
 
             validRange: function(nowDate) {
                 return {
@@ -251,8 +277,8 @@ javascript:
             defaultView: 'agendaWeek',
             events: gon.bookings["mill1"],
             height: 'auto',
-            minTime: '08:00:00',
-            maxTime: '17:00:00',
+            minTime: '12:00:00',
+            maxTime: '19:00:00',
             slotMinutes: 30,
             slotDuration: '00:30:00',
             allDaySlot: false,
@@ -263,6 +289,11 @@ javascript:
             firstDay: 1,
             hiddenDays: [0],
             firstDay: 1,
+            nowIndicator: true,
+            eventRender: function(event, element)
+            {
+                element.find('.fc-title').append("<br/>" + event.name + "<br/>" + event.username);
+            },
 
             validRange: function(nowDate) {
                 return {
@@ -288,8 +319,8 @@ javascript:
             defaultView: 'agendaWeek',
             events: gon.bookings["lathe1"],
             height: 'auto',
-            minTime: '08:00:00',
-            maxTime: '17:00:00',
+            minTime: '12:00:00',
+            maxTime: '19:00:00',
             slotMinutes: 30,
             slotDuration: '00:30:00',
             allDaySlot: false,
@@ -299,6 +330,11 @@ javascript:
             selectOverlap: false,
             hiddenDays: [0],
             firstDay: 1,
+            nowIndicator: true,
+            eventRender: function(event, element)
+            {
+                element.find('.fc-title').append("<br/>" + event.name + "<br/>" + event.username);
+            },
 
             validRange: function(nowDate) {
                 return {
@@ -324,8 +360,8 @@ javascript:
             defaultView: 'agendaWeek',
             events: gon.bookings["lathe2"],
             height: 'auto',
-            minTime: '08:00:00',
-            maxTime: '17:00:00',
+            minTime: '12:00:00',
+            maxTime: '19:00:00',
             slotMinutes: 30,
             slotDuration: '00:30:00',
             allDaySlot: false,
@@ -335,6 +371,11 @@ javascript:
             selectOverlap: false,
             hiddenDays: [0],
             firstDay: 1,
+            nowIndicator: true,
+            eventRender: function(event, element)
+            {
+                element.find('.fc-title').append("<br/>" + event.name + "<br/>" + event.username);
+            },
 
             validRange: function(nowDate) {
                 return {
@@ -360,8 +401,8 @@ javascript:
             defaultView: 'agendaWeek',
             events: gon.bookings["welding1"],
             height: 'auto',
-            minTime: '08:00:00',
-            maxTime: '17:00:00',
+            minTime: '12:00:00',
+            maxTime: '19:00:00',
             slotMinutes: 30,
             slotDuration: '00:30:00',
             allDaySlot: false,
@@ -371,6 +412,11 @@ javascript:
             selectOverlap: false,
             hiddenDays: [0],
             firstDay: 1,
+            nowIndicator: true,
+            eventRender: function(event, element)
+            {
+                element.find('.fc-title').append("<br/>" + event.name + "<br/>" + event.username);
+            },
 
             validRange: function(nowDate) {
                 return {
@@ -396,8 +442,8 @@ javascript:
             defaultView: 'agendaWeek',
             events: gon.bookings["welding2"],
             height: 'auto',
-            minTime: '08:00:00',
-            maxTime: '17:00:00',
+            minTime: '12:00:00',
+            maxTime: '19:00:00',
             slotMinutes: 30,
             slotDuration: '00:30:00',
             allDaySlot: false,
@@ -407,6 +453,11 @@ javascript:
             selectOverlap: false,
             hiddenDays: [0],
             firstDay: 1,
+            nowIndicator: true,
+            eventRender: function(event, element)
+            {
+                element.find('.fc-title').append("<br/>" + event.name + "<br/>" + event.username);
+            },
 
             validRange: function(nowDate) {
                 return {
@@ -424,6 +475,78 @@ javascript:
             }
           });
       };
+    }
+
+    else if(loc == 'stem124'){
+      initialize_calendar = function() {
+        $('.calendar_stem124_book').fullCalendar({
+            defaultView: 'agendaWeek',
+            events: gon.bookings["stem124"],
+            height: '100',
+            minTime: '08:00:00',
+            maxTime: '23:00:00',
+            slotMinutes: 15,
+            slotDuration: '00:15:00',
+            allDaySlot: false,
+            selectable: true,
+            selectHelper: true,
+            eventLimit: true,
+            selectOverlap: false,
+            firstDay: 1,
+            nowIndicator: true,
+
+            eventRender: function(event, element)
+            {
+                element.find('.fc-title').append("<br/>" + event.name + "<br/>" + event.username);
+            },
+
+            validRange: function(nowDate) {
+                return {
+                  start: nowDate.clone().subtract(1, 'days'),
+                };
+            },
+            select: function(start, end) {
+              $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
+              $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
+            }
+          });
+      };
+    }
+    else if(loc == 'stem126'){
+      initialize_calendar = function() {
+        $('.calendar_stem126_book').fullCalendar({
+            defaultView: 'agendaWeek',
+            events: gon.bookings["stem126"],
+            height: '100',
+            minTime: '08:00:00',
+            maxTime: '23:00:00',
+            slotMinutes: 15,
+            slotDuration: '00:15:00',
+            allDaySlot: false,
+            selectable: true,
+            selectHelper: true,
+            eventLimit: true,
+            selectOverlap: false,
+            firstDay: 1,
+            nowIndicator: true,
+            eventRender: function(event, element)
+            {
+                element.find('.fc-title').append("<br/>" + event.name + "<br/>" + event.username);
+            },
+
+            validRange: function(nowDate) {
+                return {
+                  start: nowDate.clone().subtract(1, 'days'),
+                };
+            },
+            select: function(start, end) {
+              $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
+              $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
+            }
+          });
+      };
+
+
     }
 
     $(document).on('turbolinks:load', initialize_calendar);
