@@ -89,16 +89,16 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-
+  config.action_mailer.default_url_options = { :host => 'http://makerroom.herokuapp.com/' }
   config.action_mailer.delivery_method = :smtp
   #GMAIL SETUP
   config.action_mailer.smtp_settings = {
     :address => "smtp.sendgrid.net",
     :port => 587,
-    :user_name => 'app91907532@heroku.com',
-    :password => '20hbmx055308',
-    :authentication => 'plain',
-    :domain => 'heroku.com',
+    :user_name => ENV["SMTP_USER"],
+    :password => ENV["SMTP_PASSWORD"],
+    :authentication => :plain,
+    :domain => 'makerroom.herokuapp.com',
     :enable_starttls_auto => true
   }
   config.action_mailer.perform_deliveries = true
