@@ -13,13 +13,22 @@
   <div class="general-settings">
       <br><br>
 
+      <div class="search-form" style="display:inline"> Search for users:
+      <%= form_tag search_admin_users_path, method: :get, action: :search do %>
+        <%= text_field_tag 'query', nil, placeholder: 'Search users by name, username, email, organization...', class:'profile-text' %><br>
+        <%= submit_tag "Search", class: 'update-button' %>
+      <% end %>
+      </div>
+
+
+
     <table class="admin-user-table">
       <tr>
-        <th class="header">Name <span onclick="sortTable('admin-user-table', 0)"><%=fa_icon('arrow-down')%></span></th>
-        <th class="header">Username <span onclick="sortTable('admin-user-table', 1)"><%=fa_icon('arrow-down')%></span></th>
-        <th class="header">Email <span onclick="sortTable('admin-user-table', 2)"><%=fa_icon('arrow-down')%></span></th>
-        <th class="header">Organization <span onclick="sortTable('admin-user-table', 3)"><%=fa_icon('arrow-down')%></span></th>
-        <th class="header"> Update Role <span onclick="sortTable('admin-user-table', 4)"><%=fa_icon('arrow-down')%></span></th>
+        <th class="header">Name</th>
+        <th class="header">Username</span></th>
+        <th class="header">Email</th>
+        <th class="header">Organization</th>
+        <th class="header">Update Role</th>
       </tr>
 
     <% @users.each do |user| %>
@@ -37,10 +46,15 @@
             user.organization.name
         %></td>
 
-        <td>
-          <%= link_to("Make admin",  make_admin_user_path(id: user.id), method: :post) %>
-        </td>
-
+        <% unless user.admin? %>
+          <td>
+            <%= link_to("Make Admin",  make_admin_user_path(id: user.id), method: :post, class:'btn btn-blue') %>
+          </td>
+        <% else %>
+          <td>
+            <%= link_to("Make Staff",  make_staff_user_path(id: user.id), method: :post, class:'btn btn-green') %>
+          </td>
+        <% end %>
       </tr>
 
 
