@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get 'rooms/stem124'
 
   get 'rooms/stem126'
-  
+
   resources :rooms
 
   devise_for :users
@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   end
 
   resource :user, only: [:edit] do
+    post :make_admin, on: :member
     collection do
       patch 'update_profile'
     end
@@ -42,6 +43,28 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get :index, path: '/'
+
+    resources :admin_setting, only: [:index] do
+      collection do
+        post 'add_organization'
+        post 'remove_organization'
+      end
+    end
+
+    resources :users, only: [:index, :edit] do
+
+      # collection do
+
+      #   get 'search'
+      #   post 'bulk_add_certifications'
+      #   patch 'set_role'
+      #   delete 'delete_repository'
+      #   delete 'delete_user'
+      #   get 'manage_roles'
+      #
+      # end
+    end
+
 
   end
 end
