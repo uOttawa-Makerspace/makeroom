@@ -1,0 +1,56 @@
+<% provide(:title, "Admin Area | User Settings") %>
+<% if flash[:notice] %>
+  <div class="alert alert-success center"><%= flash[:notice] %></div>
+<% elsif flash[:alert] %>
+  <div class="alert alert-danger center"><%= flash[:alert] %></div>
+<% end %>
+
+
+<h2> User Setting </h2>
+
+<div class="edit-column">
+  <div class="setting-title">User Settings</div>
+  <div class="general-settings">
+      <br><br>
+
+    <table class="admin-user-table">
+      <tr>
+        <th class="header">Name <span onclick="sortTable('admin-user-table', 0)"><%=fa_icon('arrow-down')%></span></th>
+        <th class="header">Username <span onclick="sortTable('admin-user-table', 1)"><%=fa_icon('arrow-down')%></span></th>
+        <th class="header">Email <span onclick="sortTable('admin-user-table', 2)"><%=fa_icon('arrow-down')%></span></th>
+        <th class="header">Organization <span onclick="sortTable('admin-user-table', 3)"><%=fa_icon('arrow-down')%></span></th>
+        <th class="header"> Update Role <span onclick="sortTable('admin-user-table', 4)"><%=fa_icon('arrow-down')%></span></th>
+      </tr>
+
+    <% @users.each do |user| %>
+      <tr>
+        <td><%=
+            user.get_full_name
+        %></td>
+        <td><%=
+            user.username
+        %></td>
+        <td><%=
+            user.email
+        %></td>
+        <td><%=
+            user.organization.name
+        %></td>
+
+        <td>
+          <%= link_to("Make admin",  make_admin_user_path(id: user.id), method: :post) %>
+        </td>
+
+      </tr>
+
+
+    <%end%>
+
+    </table>
+
+
+  </div>
+
+
+
+</div>

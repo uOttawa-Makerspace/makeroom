@@ -1,0 +1,52 @@
+
+h1 View  #{@user.username}'s Profile
+br
+h3 General
+.bar-row
+/ = simple_form_for @user, :url => {:action => "update_profile"}, html: { class: "form-horizontal"} do |form|
+/   .row
+/     .col-xs-12.col-sm-6.form-group
+/       / label.control-label for="input" Name
+/       / = form.input :first_name, as: :string, label: "First Name", error: false, required: false
+/       = form.input :first_name, label: "First Name", error: true, required: false, input_html: { class: 'first_name'}
+/       = form.input :last_name, as: :string, label: "Last Name", error: true, required: false, input_html: { class: 'last_name'}
+/       = form.label :organization_id
+/       = form.select :organization_id, options_from_collection_for_select(Organization.all, 'id', 'name', @user_organization_id), prompt: "Organization"
+/       .bar
+/
+/   .row
+/     .col-xs-12.col-sm-6.form-group
+/       = form.submit "Save", class: "btn btn-blue"
+/ .bar-row
+/ h3 dddd Bookings
+/ / .bar-row
+/ table.table style="margin-top: 1rem"
+/   thead
+/     tr
+/       th Event Name
+/       th Location
+/       th Date & Time
+/       th Repeat
+/       th Approved
+/       th colspan="3" Actions
+/       tbody
+/         - @bookings.each do |booking|
+/           tr
+/             td = (booking.event_name)
+/             td = (booking.location_humanize)
+/             td = (booking.date_humanize)
+/             td = (booking.frequency)
+/             td = (booking.approved ? "Yes" : "No")
+/             td.button-col
+/               = link_to 'View', booking, class: 'btn btn-blue'
+/               - if current_user.admin?
+/                 td.button-col
+/                   - if !booking.approved
+/                     = link_to 'Approve', approve_booking_path(id: booking.id), method: :post, class: 'btn btn-green'
+/                   - if booking.approved
+/                     = link_to 'Disapprove', disapprove_booking_path(id: booking.id), method: :post, class:'btn btn-blue'
+/             td.button-col
+/               = link_to 'Delete', booking, method: 'delete', class: 'btn btn-red'
+/
+/ div
+/   = will_paginate @bookings, :container => false
