@@ -59,7 +59,7 @@ class BookingsController < ApplicationController
     else
       @email = "Emilie.Salinas@uottawa.ca"
     end
-    binding.pry
+
     if @booking.save
       RoomBookingMailer.new_booking_notification(@booking, @email).deliver_now
       RoomBookingMailer.booking_confirmation(@booking).deliver_now
