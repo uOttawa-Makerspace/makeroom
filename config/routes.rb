@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
   resource :user, only: [:edit] do
     post :make_admin, on: :member
+    post :make_staff, on: :member
     collection do
       patch 'update_profile'
     end
@@ -53,16 +54,9 @@ Rails.application.routes.draw do
 
     resources :users, only: [:index, :edit] do
 
-      # collection do
-
-      #   get 'search'
-      #   post 'bulk_add_certifications'
-      #   patch 'set_role'
-      #   delete 'delete_repository'
-      #   delete 'delete_user'
-      #   get 'manage_roles'
-      #
-      # end
+      collection do
+        get 'search'
+      end
     end
 
 
