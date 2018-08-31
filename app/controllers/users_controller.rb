@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     end
   end
 
+
   def update_profile
     @user = current_user
     @user.skip_password_validation = true
@@ -23,6 +24,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def make_admin
+    binding.pry
+    @user = User.find(params[:id])
+    @user.set_role("admin")
+    @user.skip_password_validation = true
+    if @user.save
+      redirect_to admin_users_path
+    else
+      redirect_to admin_users_path
+    end
+  end
 private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :username, :email,:password, :password_confirmation, :organization_id )
