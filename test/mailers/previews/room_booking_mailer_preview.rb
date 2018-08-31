@@ -5,12 +5,8 @@ class RoomBookingMailerPreview < ActionMailer::Preview
     RoomBookingMailer.new_booking_notification(Booking.first , "parastoo.ss@gmail.com")
   end
 
-  def booking_confirmation_no_repeat
+  def booking_confirmation
     RoomBookingMailer.booking_confirmation(Booking.first)
-  end
-
-  def booking_confirmation_repeat
-    RoomBookingMailer.booking_confirmation(Booking.last)
   end
 
   def booking_approved
