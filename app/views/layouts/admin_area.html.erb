@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Area | Makeroom</title>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:700,300,400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<section id="setting">
+		<div class="setting-grid">
+			<div class="setting-side-panel">
+        <div class="panel-title"><%= link_to 'Admin Area', admin_index_path %></div>
+				<ul>
+		      <li class="setting-menu-item">
+
+		      </li>
+				</ul>
+			</div>
+      <% if flash[:notice] %>
+        <div id="notice"><%= flash[:notice] %></div>
+      <% end %>
+
+      <% if flash[:alert] %>
+        <div id="alert"><%= flash[:alert] %></div>
+      <% end %>
+			<%= yield %>
+
+		</div>
+	</section>
+</body>
+</html>
