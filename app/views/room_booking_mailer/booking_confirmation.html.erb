@@ -1,4 +1,4 @@
-<section style="padding-left: 3vw;padding-top: 3vw;">
+<section style="padding-left: 2vw;padding-top: 3vw;">
 <p style="font: 400 1.3em 'Raleway', sans-serif;color: #333;"><h1>
     Your booking request has been placed.
  </h1>
@@ -11,6 +11,7 @@
   <b>Booking Details:</b>
   <br>
   <b> Name: </b><%= @name %><br>
+  <b> Event Name: </b><%= @event_name %><br>
   <b> Location: </b><%= @location%><br>
   <b> Start: </b><%= @start_date.strftime('%a, %d %b %Y %H:%M')%><br>
   <b> End: </b><%= @end_date.strftime('%a, %d %b %Y %H:%M')%><br>

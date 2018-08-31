@@ -1,4 +1,4 @@
-<section style="padding-left: 3vw;padding-top: 3vw;">
+<section style="padding-left: 2vw;padding-top: 3vw;">
 <p style="font: 400 1.3em 'Raleway', sans-serif;color: #333;"><h1>
     New booking pending your approval!
  </h1>
@@ -6,6 +6,21 @@
 
 <p style="font: 400 1.1em 'Raleway', sans-serif;color: #333; line-height: 35px;">
   New booking is requested for <%= @location %> and it's pending your approval. Please Login to <%= link_to 'Makeroom', @url %> and review the booking request.
+
+  <b>Booking Details:</b>
+  <br>
+  <b> Name: </b><%= @name %><br>
+  <b> Event Name: </b><%= @event_name %><br>
+  <b> Location: </b><%= @location%><br>
+  <b> Start: </b><%= @start_date.strftime('%a, %d %b %Y %H:%M')%><br>
+  <b> End: </b><%= @end_date.strftime('%a, %d %b %Y %H:%M')%><br>
+  <% if @repeat %>
+    <b> Repeat: </b><%= @frequency%><br>
+    <b> Until: </b><%= @until_date.strftime('%a, %d %b %Y')%><br>
+  <%end%>
+
+
+
 </p>
 
 <p style="  font: 400 1.1em 'Raleway', sans-serif;color: #333;">
