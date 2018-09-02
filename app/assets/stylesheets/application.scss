@@ -226,3 +226,112 @@ select#booking_until_date_3i{
 .fc-content{
   margin: 5px;
 }
+
+
+.sidenav {
+    width: 190px;
+    position: fixed;
+    z-index: 1;
+    top: 150px;
+    left: 10px;
+    background: #eee;
+    overflow-x: hidden;
+    padding: 8px 0;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #064579;
+}
+
+.main {
+    margin-left: 140px; /* Same width as the sidebar + left position in px */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+
+#admin-main{
+  text-decoration: underline;
+  font-size: 22px;
+}
+
+.setting{
+  padding-left: 150px;
+  font-size: 20px;
+  line-height: 2;
+}
+
+a#item{
+  text-decoration: none;
+  color: #111;
+
+
+}
+
+#item a:hover {
+  text-decoration: none;
+}
+
+#organization_name{
+  padding-left: 10px;
+  border-radius: 5px;
+  height: 40px;
+}
+
+.disclaimer{
+  color: #E80C0C;
+}
+
+#remove_organization{
+  width: 300px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#query{
+  padding-left: 10px;
+  width: 600px;
+  border-radius: 10px;
+  height: 40px;
+}
+
+
+#user-table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 18px;
+}
+
+#user-table td, #user-table th {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+}
+
+#user-table tr:nth-child(even){background-color: #f2f2f2;}
+
+#user-table tr:hover {background-color: #ddd;}
+
+#user-table th {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left;
+    background-color: #111;
+    color: white;
+    text-align: center;
+
+}
