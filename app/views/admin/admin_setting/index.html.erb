@@ -1,37 +1,36 @@
 <% provide(:title, "Admin Area | General Settings") %>
-<% if flash[:notice] %>
-  <div class="alert alert-success center"><%= flash[:notice] %></div>
-<% elsif flash[:alert] %>
+<% if flash[:alert] %>
   <div class="alert alert-danger center"><%= flash[:alert] %></div>
 <% end %>
 
 
-<h2> Admin setting </h2>
-
-<div class="edit-column">
-  <div class="setting-title">General Settings</div>
-  <div class="general-settings">
-      <br><br>
-      <div>Add An Organization</div><hr><br>
-      <%= form_for @new_organization, url:{controller: "admin/admin_setting", action:"add_organization"} do |f| %>
-        <%= f.label :add_an_organization, class: "profile-label" %> <br>
-        <%= f.text_field :name, class: "profile-text" %>
-        <%= f.submit "Add", class: 'save-button' %>
-      <% end %>
-      <br><br>
-      <div>Remove An Organization</div><hr>
-      <%= form_for @new_organization, url:{controller: "admin/admin_setting", action:"remove_organization"} do |f| %>
-        <h5> **Important: Please note that by removing an organization, all the users belonging to that organization will be deleted.
-        <%= f.label :remove_an_organization, class: "profile-label" %> <br>
-        <%= select_tag :remove_organization, options_from_collection_for_select(Organization.all, :id, :name), include_blank: "Select an organization..." %>
-        <%= f.submit "Remove", class: 'save-button' %>
-      <% end %>
-
-
-
+  <div class="sidenav">
+    <a href="/admin" id="admin-main"><b>Admin Area</b></a>
+    <a href="/admin/admin_setting">General Settings</a>
+    <a href="/admin/users">Manage Users</a>
+    <a href="/bookings">Bookings</a>
 
   </div>
 
+  <div class="setting">
+    <h1> General Setting </h1>
+    <hr><br>
+      <div class="general-settings">
+          <div>Add An Organization</div><hr><br>
+          <%= form_for @new_organization, url:{controller: "admin/admin_setting", action:"add_organization"} do |f| %>
+            <%= f.text_field :name, class: "profile-text" %>
+            <%= f.submit "Add", class: 'btn btn-blue' %>
+          <% end %>
+          <br>
+          <div>Remove An Organization</div><hr>
+          <%= form_for @new_organization, url:{controller: "admin/admin_setting", action:"remove_organization"} do |f| %>
+            <h5 class="disclaimer"><i class="fas fa-exclamation-triangle"></i> Warning: Please proceed with caution. Removing an organization results in removal of the users who belong to that organization and all their bookings.</h5>
+            <br>
+            <%= select_tag :remove_organization, options_from_collection_for_select(Organization.all, :id, :name), include_blank: "Select an Organization..." %>
+            <%= f.submit "Remove", class: 'btn btn-red' %>
+          <% end %>
+
+    </div>
 
 
-</div>
+  </div>
