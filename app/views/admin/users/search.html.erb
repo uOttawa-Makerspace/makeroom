@@ -1,0 +1,126 @@
+<% provide(:title, "Admin Area | User Settings") %>
+<% if flash[:notice] %>
+  <div class="alert alert-success center"><%= flash[:notice] %></div>
+<% elsif flash[:alert] %>
+  <div class="alert alert-danger center"><%= flash[:alert] %></div>
+<% end %>
+
+<div class="sidenav">
+  <a href="/admin" id="admin-main"><b>Admin Area</b></a>
+  <a href="/admin/admin_setting">General Settings</a>
+  <a href="/admin/users">Manage Users</a>
+  <a href="/bookings">Bookings</a>
+
+</div>
+
+  <div class="setting">
+    <h1> Manage Users </h1><hr>
+    <div class="general-settings">
+
+        <div class="search-form" style="display:inline"> Search for users:
+        <%= form_tag search_admin_users_path, method: :get, action: :search do %>
+          <%= text_field_tag 'query', nil, placeholder: 'Search users by name, username, email ...', class:'profile-text' %>
+          <%= submit_tag "Search", class: 'btn btn-blue' %>
+        <% end %>
+        </div>
+
+
+  <% if @found_users.any? %>
+      <br><br>
+      <h5> Search Results </h5>
+      <table id="user-table">
+        <tr>
+          <th class="header">Name</th>
+          <th class="header">Username</span></th>
+          <th class="header">Email</th>
+          <th class="header">Organization</th>
+          <th class="header">Update Role</th>
+        </tr>
+
+      <% @found_users.each do |user| %>
+        <tr>
+          <td><%=
+              user.get_full_name
+          %></td>
+          <td><%=
+              user.username
+          %></td>
+          <td><%=
+              user.email
+          %></td>
+          <td><%=
+              user.organization.name
+          %></td>
+
+          <% unless user.admin? %>
+            <td>
+              <%= link_to("Make Admin",  make_admin_user_path(id: user.id), method: :post, class:'btn btn-blue') %>
+            </td>
+          <% else %>
+            <td>
+              <%= link_to("Make Staff",  make_staff_user_path(id: user.id), method: :post, class:'btn btn-green') %>
+            </td>
+          <% end %>
+        </tr>
+
+
+      <%end%>
+
+      </table>
+      <br>
+      <% else %>
+          No results
+      <% end %>
+      <%= will_paginate @found_users %>
+
+      <hr>
+      <br>
+
+      <h5>Users</h5>
+      <table id="user-table">
+        <tr>
+          <th class="header">Name</th>
+          <th class="header">Username</span></th>
+          <th class="header">Email</th>
+          <th class="header">Organization</th>
+          <th class="header">Update Role</th>
+        </tr>
+
+      <% @users.each do |user| %>
+        <tr>
+          <td><%=
+              user.get_full_name
+          %></td>
+          <td><%=
+              user.username
+          %></td>
+          <td><%=
+              user.email
+          %></td>
+          <td><%=
+              user.organization.name
+          %></td>
+
+          <% unless user.admin? %>
+            <td>
+              <%= link_to("Make Admin",  make_admin_user_path(id: user.id), method: :post, class:'btn btn-blue') %>
+            </td>
+          <% else %>
+            <td>
+              <%= link_to("Make Staff",  make_staff_user_path(id: user.id), method: :post, class:'btn btn-green') %>
+            </td>
+          <% end %>
+        </tr>
+
+
+      <%end%>
+
+      </table>
+      <%= will_paginate @users %>
+      <br><br>
+
+</div>
+
+
+
+</div>

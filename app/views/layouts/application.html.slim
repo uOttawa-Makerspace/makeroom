@@ -53,6 +53,8 @@ html
               = link_to 'Profile', edit_user_path, class: "dropdown-item dropdown-link"
               -if current_user.admin?
                 = link_to 'Bookings', bookings_path, class: "dropdown-item dropdown-link"
+                = link_to 'Admin Area', admin_index_path, class: "dropdown-item dropdown-link"
+
               = link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item dropdown-link"
         - else
           = link_to new_user_session_path, class: "py-2 d-none d-md-inline-block center-icon" do

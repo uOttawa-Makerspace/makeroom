@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     end
   end
 
+
   def update_profile
     @user = current_user
     @user.skip_password_validation = true
@@ -22,6 +23,34 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+
+  def make_admin
+    @user = User.find(params[:id])
+    @user.set_role("admin")
+    @user.skip_password_validation = true
+    if @user.save
+      redirect_to admin_users_path
+    else
+      redirect_to admin_users_path
+    end
+  end
+
+  def make_staff
+    @user = User.find(params[:id])
+    @user.set_role("staff")
+    @user.skip_password_validation = true
+    if @user.save
+      redirect_to admin_users_path
+    else
+      redirect_to admin_users_path
+    end
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to root_path
+  end
+
 
 private
   def user_params

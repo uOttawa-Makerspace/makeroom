@@ -5,9 +5,10 @@
       = f.input :email, required: true, autofocus: true, placeholder: 'Email', label: false
       = f.input :password, required: true, placeholder: 'Password', label: false
       / = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
-
+      br
     .form-actions.center
       = f.button :submit, "Log in", class: 'btn.btn-primary'
       br
       br
+      h5. Don't have an account?
       = link_to('Sign Up', new_user_registration_path)

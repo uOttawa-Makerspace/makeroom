@@ -40,10 +40,6 @@ class User < ApplicationRecord
   end
 
   def admin?
-    if role == 'admin'
-      return true
-    else
-      return false
-    end
+    self.role.eql?("admin")
   end
 end
