@@ -10,7 +10,7 @@
       = f.input :password, required: true, placeholder: 'Password', label: false
       = f.input :password_confirmation, required: true, placeholder: 'Password confirmation', label: false
       = f.select :organization_id, options_from_collection_for_select(Organization.all, 'id', 'name'), prompt: "Select Organization", required: true, label: false
-      p If your organization is not in the list, please contact an administrator.
+      h6 If your organization is not in the list, please contact an administrator.
     .form-actions.center
       = f.button :submit, "Sign up", class: 'btn.btn-primary'
       br
