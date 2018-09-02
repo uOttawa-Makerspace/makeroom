@@ -1,5 +1,4 @@
 class Admin::AdminSettingController < AdminAreaController
-  layout 'admin_area'
   def index
     @new_organization = Organization.new
   end

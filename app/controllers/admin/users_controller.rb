@@ -1,5 +1,4 @@
 class Admin::UsersController < AdminAreaController
-  layout 'admin_area'
   def index
     if !params[:sort].present? && !params[:direction].present?
       params[:sort] = "name"
@@ -18,7 +17,7 @@ class Admin::UsersController < AdminAreaController
                            LOWER(username) like LOWER(?) OR
                            LOWER(email) like LOWER(?)',
                            "%#{@query}%", "%#{@query}%", "%#{@query}%", "%#{@query}%")
-                           .order(:updated_at)
+                           .order(:updated_at).paginate(page: params[:page], per_page: 5)
     else
       redirect_to admin_users_path
       flash[:alert] = "Invalid parameters!"
