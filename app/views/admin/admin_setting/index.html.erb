@@ -26,7 +26,7 @@
           <%= form_for @new_organization, url:{controller: "admin/admin_setting", action:"remove_organization"} do |f| %>
             <h5 class="disclaimer"><i class="fas fa-exclamation-triangle"></i> Warning: Please proceed with caution. Removing an organization results in removal of the users who belong to that organization and all their bookings.</h5>
             <br>
-            <%= select_tag :remove_organization, options_from_collection_for_select(Organization.all, :id, :name), include_blank: "Select an Organization..." %>
+            <%= select_tag :remove_organization, options_from_collection_for_select(Organization.all.order('name ASC'), :id, :name), include_blank: "Select an Organization..." %>
             <%= f.submit "Remove", class: 'btn btn-red' %>
           <% end %>
 

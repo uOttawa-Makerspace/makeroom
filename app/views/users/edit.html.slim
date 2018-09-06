@@ -11,7 +11,7 @@ h3 General
       = form.input :first_name, label: "First Name", error: true, required: false, input_html: { class: 'first_name'}
       = form.input :last_name, as: :string, label: "Last Name", error: true, required: false, input_html: { class: 'last_name'}
       = form.label :organization_id
-      = form.select :organization_id, options_from_collection_for_select(Organization.all, 'id', 'name', @user_organization_id), prompt: "Organization"
+      = form.select :organization_id, options_from_collection_for_select(Organization.all.order('name ASC'), 'id', 'name', @user_organization_id), prompt: "Organization"
       .bar
 
   .row
