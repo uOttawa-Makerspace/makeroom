@@ -2,7 +2,7 @@
 class RoomBookingMailerPreview < ActionMailer::Preview
 
   def new_booking_notification
-    RoomBookingMailer.new_booking_notification(Booking.first , "parastoo.ss@gmail.com")
+    RoomBookingMailer.new_booking_notification(Booking.first , "test@gmail.com")
   end
 
   def booking_confirmation
