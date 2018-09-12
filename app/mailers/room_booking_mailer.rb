@@ -2,8 +2,8 @@ class RoomBookingMailer < ApplicationMailer
   def new_booking_notification(booking , email)
     @booking = booking
     @name = booking.name
+    @email = booking.email
     @event_name = booking.event_name
-    @email = email
     @location = booking.location_humanize
     @start_date = booking.start_date
     @end_date = booking.end_date
@@ -11,7 +11,8 @@ class RoomBookingMailer < ApplicationMailer
     @frequency = booking.frequency
     @until_date = booking.until_date
     @url = "http://rooms.makerepo.com/"
-    mail(to: @email, subject: "Makeroom - New booking pending approval")
+    @recepient = email
+    mail(to: @recepient, subject: "Makeroom - New booking pending approval")
   end
 
   def booking_confirmation(booking)
