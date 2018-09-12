@@ -53,6 +53,7 @@ Rails.application.routes.draw do
     end
 
     resources :users, only: [:index, :edit] do
+      post :destroy_user, on: :member
 
       collection do
         get 'search'
