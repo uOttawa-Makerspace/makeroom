@@ -52,11 +52,11 @@
 
           <% unless user.admin? %>
             <td>
-              <%= link_to("Make Admin",  make_admin_user_path(id: user.id), method: :post, class:'btn btn-blue') %>
+              <%= link_to("Make Admin",  make_admin_user_path(id: user.id), method: :post, class:'btn btn-blue table-btn') %>
             </td>
           <% else %>
             <td>
-              <%= link_to("Make Staff",  make_staff_user_path(id: user.id), method: :post, class:'btn btn-green') %>
+              <%= link_to("Make Staff",  make_staff_user_path(id: user.id), method: :post, class:'btn btn-green table-btn') %>
             </td>
           <% end %>
 
