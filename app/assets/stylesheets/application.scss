@@ -313,7 +313,7 @@ a#item{
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 #user-table td, #user-table th {
@@ -334,4 +334,13 @@ a#item{
     color: white;
     text-align: center;
 
+}
+.table th{
+  text-align: center;
+}
+.table td{
+  text-align: center;
+}
+.table td.date{
+  white-space: nowrap;
 }
