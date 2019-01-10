@@ -19,7 +19,7 @@
 
         <div class="search-form" style="display:inline"> Search for users:
         <%= form_tag search_admin_users_path, method: :get, action: :search do %>
-          <%= text_field_tag 'query', nil, placeholder: 'Search users by name, username, email ...', class:'profile-text' %>
+          <%= text_field_tag 'query', nil, placeholder: 'Search users by name, username, email, organization ...', class:'profile-text' %>
           <%= submit_tag "Search", class: 'btn btn-blue' %>
         <% end %>
         </div>
