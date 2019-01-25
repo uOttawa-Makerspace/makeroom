@@ -28,6 +28,8 @@ class BookingsController < ApplicationController
       @sandbox_bookings = Booking.where(location: Booking.locations[:sandbox]).flat_map{ |e| e.calendar_event}
     elsif params[:location] == "trailer"
       @trailer_bookings = Booking.where(location: Booking.locations[:trailer]).flat_map{ |e| e.calendar_event}
+    elsif params[:location] == "assembly_area"
+      @assembly_area_bookings = Booking.where(location: Booking.locations[:assembly_area]).flat_map{ |e| e.calendar_event}
     elsif params[:location] == "stem124"
       @stem124_bookings = Booking.where(location: Booking.locations[:stem124]).flat_map{ |e| e.calendar_event}
     elsif params[:location] == "stem126"
@@ -55,6 +57,8 @@ class BookingsController < ApplicationController
       @email = "brunsfield@uOttawa.ca"
     elsif @booking.location == "sandbox"
       @email = "sandbox@uOttawa.ca"
+    elsif @booking.location == "assembly_area" || @booking.location == "trailer"
+      @email = "JMTS@uOttawa.ca"      
     else
       @email = "Emilie.Salinas@uottawa.ca"
     end
