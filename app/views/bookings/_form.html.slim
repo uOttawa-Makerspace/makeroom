@@ -70,6 +70,8 @@
       .calendar_welding2_book
     -elsif @location == "trailer"
       .calendar_trailer_book
+    -elsif @location == "assembly_area"
+      .calendar_assembly_area_book
     -elsif @location == "stem124"
       .calendar_stem124_book
     -elsif @location == "stem126"
@@ -271,6 +273,42 @@ javascript:
           });
       };
     }
+
+    else if(loc == 'assembly_area'){
+      initialize_calendar = function() {
+        $('.calendar_assembly_area_book').fullCalendar({
+            defaultView: 'agendaWeek',
+            events: gon.bookings["trailer"],
+            height: '100',
+            minTime: '07:00:00',
+            maxTime: '23:59:59',
+            slotMinutes: 15,
+            slotDuration: '00:15:00',
+            allDaySlot: true,
+            selectable: true,
+            selectHelper: true,
+            eventLimit: true,
+            selectOverlap: false,
+            firstDay: 1,
+            nowIndicator: true,
+            eventRender: function(event, element)
+            {
+                element.find('.fc-title').append("<br/>" + event.name + "<br/>" + event.username);
+            },
+
+            validRange: function(nowDate) {
+                return {
+                  start: nowDate.clone().subtract(1, 'days'),
+                };
+            },
+            select: function(start, end) {
+              $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
+              $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
+            }
+          });
+      };
+    }
+
     else if(loc == 'mill1'){
       initialize_calendar = function() {
         $('.calendar_mill1_book').fullCalendar({
