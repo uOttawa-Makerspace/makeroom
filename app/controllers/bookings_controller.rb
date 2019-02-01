@@ -83,6 +83,7 @@ class BookingsController < ApplicationController
   def approve
     @booking = Booking.find(params[:id])
     @booking.approved = true
+    @booking.approved_by = current_user.id
     if @booking.save
       RoomBookingMailer.booking_approved(@booking).deliver_now
       redirect_to bookings_path
@@ -94,6 +95,7 @@ class BookingsController < ApplicationController
   def disapprove
     @booking = Booking.find(params[:id])
     @booking.approved = false
+    @booking.approved_by = nil
     if @booking.save
       redirect_to bookings_path
     else
@@ -113,6 +115,6 @@ class BookingsController < ApplicationController
 
 private
   def booking_params
-    params.require(:booking).permit(:name, :email, :event_name, :location, :start_date, :end_date, :repeat, :frequency, :anchor, :until_date)
+    params.require(:booking).permit(:name, :email, :event_name, :location, :start_date, :end_date, :repeat, :frequency, :anchor, :until_date, :approved_by)
   end
 end
