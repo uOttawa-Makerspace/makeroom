@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180828020403) do
+ActiveRecord::Schema.define(version: 20190201204736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20180828020403) do
     t.integer "frequency", limit: 2, default: 0
     t.date "anchor"
     t.date "until_date"
+    t.integer "approved_by"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
