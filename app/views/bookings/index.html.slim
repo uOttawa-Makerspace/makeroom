@@ -18,9 +18,9 @@ table.table style="margin-top: 1rem"
     - @bookings.each do |booking|
       tr
         td = (booking.name)
-        td.username = (booking.user.username)
+        td = (booking.user.username)
         td = (booking.event_name)
-        td = (booking.location_humanize)
+        td.location = (booking.location_humanize)
         td.date = (booking.date_humanize)
         td = (booking.frequency)
         td = (booking.approved ? "Yes" : "No")

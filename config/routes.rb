@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get 'rooms/trailer'
 
+  get 'rooms/assembly_area'
+
   get 'rooms/stem124'
 
   get 'rooms/stem126'

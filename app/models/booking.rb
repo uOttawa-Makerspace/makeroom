@@ -20,7 +20,7 @@ class Booking < ApplicationRecord
     presence: {message: "Please provide the anchor date"}, if: :repeating?
 
 
-  enum location: %i[makerspace makerlab119 makerlab121 sandbox mill1 lathe1 lathe2 welding1 welding2 trailer stem124 stem126]
+  enum location: %i[makerspace makerlab119 makerlab121 sandbox mill1 lathe1 lathe2 welding1 welding2 trailer assembly_area stem124 stem126]
   enum frequency: {Never: 0, Daily: 1, Weekly: 2, Biweekly: 3, Monthly: 4, Annually: 5}
   def date_humanize
     start = I18n.l start_date, format: :short if start_date.present?
@@ -40,6 +40,7 @@ class Booking < ApplicationRecord
       welding1: "Welding 1",
       welding2: "Welding 2",
       trailer: "CEED Trailer",
+      assembly_area: "Assembly Area",
       stem124: "STEM 124",
       stem126: "STEM 126"
     }
@@ -57,6 +58,7 @@ class Booking < ApplicationRecord
       welding1: "Welding 1",
       welding2: "Welding 2",
       trailer: "CEED Trailer",
+      assembly_area: "Assembly Area",
       stem124: "STEM 124",
       stem126: "STEM 126"
 
