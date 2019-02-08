@@ -34,6 +34,13 @@ class BookingsController < ApplicationController
       @stem124_bookings = Booking.where(location: Booking.locations[:stem124]).flat_map{ |e| e.calendar_event}
     elsif params[:location] == "stem126"
       @stem126_bookings = Booking.where(location: Booking.locations[:stem126]).flat_map{ |e| e.calendar_event}
+    elsif params[:location] == "sandbox_workstation1"
+      @sandbox_workstation1_bookings = Booking.where(location: Booking.locations[:sandbox_workstation1]).flat_map{ |e| e.calendar_event}
+    elsif params[:location] == "sandbox_workstation2"
+      @sandbox_workstation2_bookings = Booking.where(location: Booking.location[:sandbox_workstation2]).flat_map{ |e| e.calendar_event}
+    elsif params[:location] == "sandbox_workstation3"
+      @sandbox_workstation3_bookings = Booking.where(location: Booking.location[:sandbox_workstation3]).flat_map{ |e| e.calendar_event}
+
     end
 
     @booking[:location] = params[:location]
@@ -55,10 +62,10 @@ class BookingsController < ApplicationController
       @email = "makerlab@uOttawa.ca"
     elsif @booking.location == "mill1" || @booking.location == "lathe1" || @booking.location == "lath2" || @booking.location == "welding1" || @booking.location == "welding2"
       @email = "brunsfield@uOttawa.ca"
-    elsif @booking.location == "sandbox"
+    elsif @booking.location == "sandbox" || @booking.location == "sandbox_workstation1" || @booking.location == "sandbox_workstation2" || @location == "sandbox_workstation3"
       @email = "sandbox@uOttawa.ca"
     elsif @booking.location == "assembly_area" || @booking.location == "trailer"
-      @email = "JMTS@uOttawa.ca"      
+      @email = "JMTS@uOttawa.ca"
     else
       @email = "Emilie.Salinas@uottawa.ca"
     end
