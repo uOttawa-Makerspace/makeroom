@@ -124,6 +124,48 @@ json.sandbox @sandbox_bookings do |booking|
   end
 end
 
+json.sandbox_workstation1 @sandbox_workstation1_bookings do |booking|
+  json.id booking.id
+  json.username booking.user.username
+  json.name booking.name
+  json.title booking.event_name
+  json.start booking.start_date
+  json.end booking.end_date
+  if booking.approved
+    json.color '#2EFF85'
+  else
+    json.color '#ef5350'
+  end
+end
+
+json.sandbox_workstation2 @sandbox_workstation2_bookings do |booking|
+  json.id booking.id
+  json.username booking.user.username
+  json.name booking.name
+  json.title booking.event_name
+  json.start booking.start_date
+  json.end booking.end_date
+  if booking.approved
+    json.color '#2EFF85'
+  else
+    json.color '#ef5350'
+  end
+end
+
+json.sandbox_workstation3 @sandbox_workstation3_bookings do |booking|
+  json.id booking.id
+  json.username booking.user.username
+  json.name booking.name
+  json.title booking.event_name
+  json.start booking.start_date
+  json.end booking.end_date
+  if booking.approved
+    json.color '#2EFF85'
+  else
+    json.color '#ef5350'
+  end
+end
+
 json.trailer @trailer_bookings do |booking|
   json.id booking.id
   json.username booking.user.username
