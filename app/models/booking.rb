@@ -43,9 +43,9 @@ class Booking < ApplicationRecord
       stem124: "STEM 124",
       stem126: "STEM 126",
       assembly_area: "Assembly Area",
-      sandbox_workstation1: "Workstation 1",
-      sandbox_workstation2: "Workstation 2",
-      sandbox_workstation3: "Workstation 3"
+      sandbox_workstation1: "Workstation #1",
+      sandbox_workstation2: "Workstation #2",
+      sandbox_workstation3: "Workstation #3"
     }
   end
 
@@ -64,9 +64,9 @@ class Booking < ApplicationRecord
       stem124: "STEM 124",
       stem126: "STEM 126",
       assembly_area: "Assembly Area",
-      sandbox_workstation1: "Workstation 1",
-      sandbox_workstation2: "Workstation 2",
-      sandbox_workstation3: "Workstation 3"
+      sandbox_workstation1: "Workstation #1",
+      sandbox_workstation2: "Workstation #2",
+      sandbox_workstation3: "Workstation #3"
     }
     all_locations_list[location.to_sym]
   end
