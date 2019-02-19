@@ -44,6 +44,21 @@ class RoomsController < ApplicationController
     @sandbox_bookings = Booking.where(location: Booking.locations[:sandbox]).flat_map{ |e| e.calendar_event}
   end
 
+  def sandbox_workstation1
+    @current_user = current_user
+    @sandbox_workstation1_bookings = Booking.where(location: Booking.locations[:sandbox_workstation1]).flat_map{ |e| e.calendar_event}
+  end
+
+  def sandbox_workstation2
+    @current_user = current_user
+    @sandbox_workstation2_bookings = Booking.where(location: Booking.locations[:sandbox_workstation2]).flat_map{ |e| e.calendar_event}
+  end
+
+  def sandbox_workstation3
+    @current_user = current_user
+    @sandbox_workstation3_bookings = Booking.where(location: Booking.locations[:sandbox_workstation3]).flat_map{ |e| e.calendar_event}
+  end
+
   def trailer
     @current_user = current_user
     @trailer_bookings = Booking.where(location: Booking.locations[:trailer]).flat_map{ |e| e.calendar_event}

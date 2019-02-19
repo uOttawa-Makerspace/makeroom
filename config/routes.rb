@@ -7,6 +7,12 @@ Rails.application.routes.draw do
 
   get 'rooms/sandbox'
 
+  get 'rooms/sandbox_workstation1'
+
+  get 'rooms/sandbox_workstation2'
+
+  get 'rooms/sandbox_workstation3'
+
   get 'rooms/mill1'
 
   get 'rooms/lathe1'
