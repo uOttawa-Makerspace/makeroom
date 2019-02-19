@@ -214,7 +214,7 @@ javascript:
             defaultView: 'agendaWeek',
             events: gon.bookings["sandbox"],
             height: '100',
-            minTime: '08:00:00',
+            minTime: '07:00:00',
             maxTime: '23:00:00',
             slotMinutes: 15,
             slotDuration: '00:15:00',
@@ -244,19 +244,21 @@ javascript:
 
     }
 
-    else if (location == 'sandbox_workstation1'){
+    else if (loc == 'sandbox_workstation1'){
       initialize_calendar = function() {
         $('.calendar_workstation1_book').fullCalendar({
             defaultView: 'agendaWeek',
             eventSources: ['/rooms/sandbox_workstation1.json','/rooms/sandbox.json'],
-            height: '100',
-            minTime: '8:00:00',
-            maxTime: '23:00:00',
+            height: '95',
+            minTime: '10:00:00',
+            maxTime: '18:00:00',
+            slotMinutes: 15,
             slotDuration: '00:15:00',
             allDaySlot: false,
-            selectable: false,
+            selectable: true,
             selectHelper: true,
             eventLimit: true,
+            selectOverlap: false,
             firstDay: 1,
             nowIndicator: true,
             eventRender: function(event, element)
@@ -264,30 +266,36 @@ javascript:
                 element.find('.fc-title').append("<br/>" + event.name + "<br/>" + event.username);
             },
 
-            header: {
-              left: 'prev,next today',
-              center: 'title',
-              right: 'agendaDay,agendaWeek,month'
+            validRange: function(nowDate) {
+                return {
+                  start: nowDate.clone().subtract(1, 'days'),
+                };
             },
+            select: function(start, end) {
+              $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
+              $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
+            }
 
           });
       };
 
     }
 
-    else if (location == 'sandbox_workstation2'){
+    else if (loc == 'sandbox_workstation2'){
       initialize_calendar = function() {
         $('.calendar_workstation2_book').fullCalendar({
             defaultView: 'agendaWeek',
             eventSources: ['/rooms/sandbox_workstation2.json','/rooms/sandbox.json'],
-            height: '100',
-            minTime: '8:00:00',
-            maxTime: '23:00:00',
+            height: '95',
+            minTime: '10:00:00',
+            maxTime: '18:00:00',
+            slotMinutes: 15,
             slotDuration: '00:15:00',
             allDaySlot: false,
-            selectable: false,
+            selectable: true,
             selectHelper: true,
             eventLimit: true,
+            selectOverlap: false,
             firstDay: 1,
             nowIndicator: true,
             eventRender: function(event, element)
@@ -295,30 +303,36 @@ javascript:
                 element.find('.fc-title').append("<br/>" + event.name + "<br/>" + event.username);
             },
 
-            header: {
-              left: 'prev,next today',
-              center: 'title',
-              right: 'agendaDay,agendaWeek,month'
+            validRange: function(nowDate) {
+                return {
+                  start: nowDate.clone().subtract(1, 'days'),
+                };
             },
+            select: function(start, end) {
+              $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
+              $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
+            }
 
           });
       };
 
     }
 
-    else if (location == 'sandbox_workstation3'){
+    else if (loc == 'sandbox_workstation3'){
       initialize_calendar = function() {
         $('.calendar_workstation3_book').fullCalendar({
             defaultView: 'agendaWeek',
             eventSources: ['/rooms/sandbox_workstation3.json','/rooms/sandbox.json'],
-            height: '100',
-            minTime: '8:00:00',
-            maxTime: '23:00:00',
+            height: '95',
+            minTime: '10:00:00',
+            maxTime: '18:00:00',
+            slotMinutes: 15,
             slotDuration: '00:15:00',
             allDaySlot: false,
-            selectable: false,
+            selectable: true,
             selectHelper: true,
             eventLimit: true,
+            selectOverlap: false,
             firstDay: 1,
             nowIndicator: true,
             eventRender: function(event, element)
@@ -326,11 +340,15 @@ javascript:
                 element.find('.fc-title').append("<br/>" + event.name + "<br/>" + event.username);
             },
 
-            header: {
-              left: 'prev,next today',
-              center: 'title',
-              right: 'agendaDay,agendaWeek,month'
+            validRange: function(nowDate) {
+                return {
+                  start: nowDate.clone().subtract(1, 'days'),
+                };
             },
+            select: function(start, end) {
+              $('#booking_start_date').val(moment(start).format('DD-MM-YYYY HH:mm'));
+              $('#booking_end_date').val(moment(end).format('DD-MM-YYYY HH:mm'));
+            }
 
           });
       };

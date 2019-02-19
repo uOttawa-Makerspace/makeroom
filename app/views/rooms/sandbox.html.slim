@@ -13,6 +13,7 @@ javascript:
     initialize_calendar = function() {
       $('.calendar_sandbox').fullCalendar({
           defaultView: 'agendaWeek',
+          // eventSources: ['/rooms/sandbox.json','/rooms/sandbox_workstation1.json','/rooms/sandbox_workstation2.json','/rooms/sandbox_workstation3.json'],
           events: '/rooms/sandbox.json',
           height: '100',
           minTime: '8:00:00',

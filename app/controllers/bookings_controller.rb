@@ -37,9 +37,9 @@ class BookingsController < ApplicationController
     elsif params[:location] == "sandbox_workstation1"
       @sandbox_workstation1_bookings = Booking.where(location: Booking.locations[:sandbox_workstation1]).flat_map{ |e| e.calendar_event}
     elsif params[:location] == "sandbox_workstation2"
-      @sandbox_workstation2_bookings = Booking.where(location: Booking.location[:sandbox_workstation2]).flat_map{ |e| e.calendar_event}
+      @sandbox_workstation2_bookings = Booking.where(location: Booking.locations[:sandbox_workstation2]).flat_map{ |e| e.calendar_event}
     elsif params[:location] == "sandbox_workstation3"
-      @sandbox_workstation3_bookings = Booking.where(location: Booking.location[:sandbox_workstation3]).flat_map{ |e| e.calendar_event}
+      @sandbox_workstation3_bookings = Booking.where(location: Booking.locations[:sandbox_workstation3]).flat_map{ |e| e.calendar_event}
 
     end
 
