@@ -62,7 +62,7 @@ class BookingsController < ApplicationController
       @email = "makerlab@uOttawa.ca"
     elsif @booking.location == "mill1" || @booking.location == "lathe1" || @booking.location == "lath2" || @booking.location == "welding1" || @booking.location == "welding2"
       @email = "brunsfield@uOttawa.ca"
-    elsif @booking.location == "sandbox" || @booking.location == "sandbox_workstation1" || @booking.location == "sandbox_workstation2" || @location == "sandbox_workstation3"
+    elsif @booking.location == "sandbox" || @booking.location == "sandbox_workstation1" || @booking.location == "sandbox_workstation2" || @booking.location == "sandbox_workstation3"
       @email = "sandbox@uOttawa.ca"
     elsif @booking.location == "assembly_area" || @booking.location == "trailer"
       @email = "JMTS@uOttawa.ca"
