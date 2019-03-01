@@ -340,15 +340,42 @@ a#item{
     text-align: center;
 
 }
-.table th{
-  text-align: center;
+// .table th{
+//   text-align: center;
+// }
+// .table td{
+//   text-align: center;
+// }
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
-.table td{
+
+th {
+  border: 0px;
   text-align: center;
+  padding: 8px;
+  border-bottom: 3px solid #000;
+
 }
-.table td.date{
+td{
+  border: 1px;
+  text-align: center;
+  padding: 8px;
+}
+
+td.date{
   white-space: nowrap;
 }
-.table td.location{
+td.location{
   white-space: nowrap;
+}
+tr#rows:hover {background-color: #ddd;}
+// tr:nth-child(1) {
+//   background-color: #A8A8A8;
+// }
+div.contsiner-col-10{
+  margin-right: 0;
 }
