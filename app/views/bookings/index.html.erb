@@ -6,6 +6,20 @@
   <div class="alert alert-danger center"><%= flash[:alert] %></div>
 <% end %>
 <h1> Bookings </h1>
+<% if params['pending']%>
+  <div class="tabs">
+  <div class="not-focused"><%= link_to "All Bookings", bookings_path%></div> |
+  <div class="focused"><div class="fas fa-hourglass-half"></div><%= link_to " Pending Bookings", bookings_path(:pending => true)%></div>
+  </div>
+<% else %>
+  <div class="tabs">
+  <div class="focused"><%= link_to "All Bookings", bookings_path%></div> |
+  <div class="not-focused"><div class="fas fa-hourglass-half"></div><%= link_to " Pending Bookings", bookings_path(:pending => true)%></div>
+  </div>
+<% end %>
+
+
+
 <br>
 <div class="table" >
   <table>
@@ -29,7 +43,7 @@
       <td><%=booking.name%></td>
       <td><%=booking.user.username%></td>
       <td><%=booking.event_name%></td>
-      <td class="location"><%=booking.location%></td>
+      <td class="location"><%=booking.location_humanize%></td>
       <td class="date"><%=booking.date_humanize%></td>
       <td><%=booking.frequency%></td>
       <td><%=booking.approved ? "Yes" : "No"%></td>
