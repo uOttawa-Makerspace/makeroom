@@ -4,6 +4,9 @@ class BookingsController < ApplicationController
       redirect_to root_path
     end
     @bookings = Booking.all.order("id DESC").paginate(page: params[:page], per_page: 10)
+    if params[:pending]
+      @bookings = Booking.where("end_date > ?", DateTime.now).where(:approved => false).order("id DESC").paginate(page: params[:page], per_page: 10)
+    end
   end
 
   def new

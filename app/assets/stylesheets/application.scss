@@ -232,7 +232,6 @@ select#booking_until_date_3i{
   margin: 5px;
 }
 
-
 .sidenav {
     width: 190px;
     position: fixed;
@@ -267,7 +266,6 @@ select#booking_until_date_3i{
     .sidenav a {font-size: 18px;}
 }
 
-
 #admin-main{
   text-decoration: underline;
   font-size: 22px;
@@ -282,8 +280,6 @@ select#booking_until_date_3i{
 a#item{
   text-decoration: none;
   color: #111;
-
-
 }
 
 #item a:hover {
@@ -340,15 +336,74 @@ a#item{
     text-align: center;
 
 }
-.table th{
-  text-align: center;
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
-.table td{
+
+th {
+  border: 0px;
   text-align: center;
+  padding: 8px;
+  border-bottom: 3px solid #000;
+
 }
-.table td.date{
+td{
+  border: 1px;
+  text-align: center;
+  padding: 8px;
+}
+
+td.date{
   white-space: nowrap;
 }
-.table td.location{
+td.location{
   white-space: nowrap;
+}
+tr#rows:hover {background-color: #ddd;}
+
+div.contsiner-col-10{
+  margin-right: 0;
+}
+
+.tabs{
+  float: right;
+  a{
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 15px;
+
+  }
+}
+.focused{
+  display: inline-block;
+  padding: 10px 10px;
+  border-style: inset;
+  background-color: #D3D3D3;
+
+  &:hover{
+    background-color: #BEE2E1;
+
+  }
+}
+
+.not-focused{
+  display: inline-block;
+  padding: 10px 10px;
+  color: #5f9ea0;
+  border-top: solid;
+  border-width: 2px;
+
+  &:hover{
+    background-color: #BEE2E1;
+
+  }
+}
+
+.fas.fa-hourglass-half{
+  color: #000;
 }

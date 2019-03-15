@@ -1,0 +1,65 @@
+<div class="index_page_booking" style="margin-right: -6em; margin-left: -6em; margin-top: 1rem">
+<% provide(:title, "Admin Area | User Settings") %>
+<% if flash[:notice] %>
+  <div class="alert alert-success center"><%= flash[:notice] %></div>
+<% elsif flash[:alert] %>
+  <div class="alert alert-danger center"><%= flash[:alert] %></div>
+<% end %>
+<h1> Bookings </h1>
+<% if params['pending']%>
+  <div class="tabs">
+  <div class="not-focused"><%= link_to "All Bookings", bookings_path%></div> |
+  <div class="focused"><div class="fas fa-hourglass-half"></div><%= link_to " Pending Bookings", bookings_path(:pending => true)%></div>
+  </div>
+<% else %>
+  <div class="tabs">
+  <div class="focused"><%= link_to "All Bookings", bookings_path%></div> |
+  <div class="not-focused"><div class="fas fa-hourglass-half"></div><%= link_to " Pending Bookings", bookings_path(:pending => true)%></div>
+  </div>
+<% end %>
+
+
+
+<br>
+<div class="table" >
+  <table>
+    <tr>
+      <th class="header">Name</th>
+      <th class="header">Username</th>
+      <th class="header">Event Name</th>
+      <th class="header">Location</th>
+      <th class="header">Date & Time</th>
+      <th class="header">Repeat</th>
+      <th class="header">Approved</th>
+      <th class="header">View</th>
+      <th class="header">Action</th>
+      <th class="header">Remove</th>
+      <th class="header"> Approved By</th>
+    </tr>
+
+
+  <% @bookings.each do |booking| %>
+    <tr id="rows">
+      <td><%=booking.name%></td>
+      <td><%=booking.user.username%></td>
+      <td><%=booking.event_name%></td>
+      <td class="location"><%=booking.location_humanize%></td>
+      <td class="date"><%=booking.date_humanize%></td>
+      <td><%=booking.frequency%></td>
+      <td><%=booking.approved ? "Yes" : "No"%></td>
+      <td><%= link_to '', booking, class: 'fas fa-eye', style:"text-decoration:none; color: #000"%></td>
+      <% if !booking.approved %>
+        <td><%= link_to("Approve",  approve_booking_path(id: booking.id), method: :post, class: 'btn btn-green table-btn') %></td>
+      <% else %>
+        <td><%= link_to("Disapprove",  disapprove_booking_path(id: booking.id), method: :post, class:'btn btn-blue table-btn') %></td>
+      <% end %>
+      <td><%= link_to '', booking, method: 'delete', data: {confirm: 'Are you sure you want to delete this booking? This action cannot be undone.'}, class: 'fas fa-trash-alt',style:"text-decoration:none; color: #F00" %></td>
+      <td><%=(booking.approved_by ? (User.find(booking.approved_by).username) : "")%></td>
+
+    </tr>
+  <%end%>
+
+  </table>
+  <%= will_paginate @bookings %>
+</div>
+</div>
