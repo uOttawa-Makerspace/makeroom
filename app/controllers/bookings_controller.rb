@@ -68,9 +68,9 @@ class BookingsController < ApplicationController
     elsif @booking.location == "sandbox" || @booking.location == "sandbox_workstation1" || @booking.location == "sandbox_workstation2" || @booking.location == "sandbox_workstation3"
       @email = "sandbox@uOttawa.ca"
     elsif @booking.location == "assembly_area" || @booking.location == "trailer"
-      @email = "JMTS@uOttawa.ca"
+      @email = "jmts.ecjm@gmail.com"
     else
-      @email = "Emilie.Salinas@uottawa.ca"
+      @email = "jmts.ecjm@gmail.com"
     end
 
     if @booking.save
