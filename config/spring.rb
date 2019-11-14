@@ -1,6 +1,6 @@
 %w(
   .ruby-version
-  .rbenv-vars
+  .ruby-version-vars
   tmp/restart.txt
   tmp/caching-dev.txt
 ).each { |path| Spring.watch(path) }
