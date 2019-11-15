@@ -55,6 +55,7 @@ Rails.application.routes.draw do
 
     resources :admin_setting, only: [:index] do
       collection do
+        post :edit
         post 'add_organization'
         post 'remove_organization'
       end

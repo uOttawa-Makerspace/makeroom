@@ -1,6 +1,16 @@
 class Admin::AdminSettingController < AdminAreaController
   def index
     @new_organization = Organization.new
+    @all_organizations = Organization.all.order('name ASC')
+  end
+
+  def edit
+    organization = Organization.find(params[:organization_update][:organization_id])
+    old_name = organization.name
+    new_name = params[:organization_update][:name]
+    organization.update_attributes(name: new_name)
+    flash[:notice] = "Changed #{old_name} to #{new_name}."
+    redirect_to admin_admin_setting_index_path
   end
 
   def add_organization
