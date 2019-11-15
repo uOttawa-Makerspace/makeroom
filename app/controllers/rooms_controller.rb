@@ -79,7 +79,7 @@ class RoomsController < ApplicationController
   end
 
   def composite_room
-    @current_user
+    @current_user = current_user
     @composite_room_bookings = Booking.where(location: Booking.locations[:composite_room]).flat_map{ |e| e.calendar_event}
   end
 
