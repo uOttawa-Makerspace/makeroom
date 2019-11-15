@@ -31,6 +31,8 @@ Rails.application.routes.draw do
 
   get 'rooms/stem126'
 
+  get 'rooms/composite_room'
+
   resources :rooms
 
   devise_for :users
