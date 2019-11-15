@@ -78,4 +78,9 @@ class RoomsController < ApplicationController
     @stem126_bookings = Booking.where(location: Booking.locations[:stem126]).flat_map{ |e| e.calendar_event}
   end
 
+  def composite_room
+    @current_user = current_user
+    @composite_room_bookings = Booking.where(location: Booking.locations[:composite_room]).flat_map{ |e| e.calendar_event}
+  end
+
 end
