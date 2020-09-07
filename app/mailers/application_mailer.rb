@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "uottawa.makerepo@gmail.com"
+  default from: "rooms@makerepo.com"
   layout 'mailer'
 end
