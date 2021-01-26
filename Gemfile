@@ -40,6 +40,8 @@ gem "font-awesome-rails"
 gem 'will_paginate', '>= 3.1'
 gem 'pry', '~> 0.11.3'
 gem 'ice_cube'
+gem 'omniauth', '~> 1.9.1'
+gem 'omniauth-saml', '~> 1.10.2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

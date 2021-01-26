@@ -10,5 +10,9 @@
       = f.button :submit, "Log in", class: 'btn.btn-primary'
       br
       br
-      h5. Don't have an account?
+      = link_to "Sign in with Makerepo", user_saml_omniauth_authorize_path, class: 'btn btn-primary'
+      br
+      br
+      h5 Don't have an account?
       = link_to('Sign Up', new_user_registration_path)
+

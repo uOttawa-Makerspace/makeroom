@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
   resources :rooms
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   root 'home#index'
   get 'home/index'
 
