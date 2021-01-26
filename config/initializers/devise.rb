@@ -277,11 +277,11 @@ Devise.setup do |config|
 
   require 'omniauth'
   idp_metadata_parser = OneLogin::RubySaml::IdpMetadataParser.new
-  idp_metadata = idp_metadata_parser.parse_remote_to_hash("https://staging.makerepo.com/saml/metadata")[:idp_cert_fingerprint]
+  idp_metadata = idp_metadata_parser.parse_remote_to_hash("https://makerepo.com/saml/metadata")[:idp_cert_fingerprint]
 
   config.omniauth :saml,
                   idp_cert_fingerprint: idp_metadata,
-                  idp_sso_target_url: 'https://staging.makerepo.com/saml/auth',
+                  idp_sso_target_url: 'https://makerepo.com/saml/auth',
                   issuer: 'rooms.makerepo.com',
                   request_attributes: []
 end
