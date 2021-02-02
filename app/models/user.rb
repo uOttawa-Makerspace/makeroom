@@ -68,9 +68,14 @@ class User < ApplicationRecord
 
       if info['is_admin'].join == 'true'
         User.last.set_role('admin')
+        User.last.skip_password_validation = true
+        User.last.save
       elsif info['is_staff'].join == 'true'
         User.last.set_role('staff')
+        User.last.skip_password_validation = true
+        User.last.save
       end
+
 
       User.last
     end
