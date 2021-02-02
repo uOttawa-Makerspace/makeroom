@@ -68,6 +68,11 @@ class User < ApplicationRecord
 
       @created_user = User.last
 
+      puts(info['is_admin'])
+      puts(info['is_admin'].join == 'true')
+      puts(info['is_staff'])
+      puts(info['is_staff'].join == 'true')
+
       if info['is_admin'].join == 'true'
         @created_user = User.last
         @created_user.set_role('admin')
