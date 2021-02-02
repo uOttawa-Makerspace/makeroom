@@ -66,18 +66,21 @@ class User < ApplicationRecord
         user.last_name = info['name'].join.split(' ', 2)[1]
       end
 
+      @created_user = User.last
+
       if info['is_admin'].join == 'true'
-        User.last.set_role('admin')
-        User.last.skip_password_validation = true
-        User.last.save
+        @created_user = User.last
+        @created_user.set_role('admin')
+        @created_user.skip_password_validation = true
+        @created_user.save!
       elsif info['is_staff'].join == 'true'
-        User.last.set_role('staff')
-        User.last.skip_password_validation = true
-        User.last.save
+        @created_user = User.last
+        @created_user.set_role('staff')
+        @created_user.skip_password_validation = true
+        @created_user.save!
       end
 
-
-      User.last
+      @created_user
     end
   end
 end
