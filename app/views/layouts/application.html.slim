@@ -73,7 +73,7 @@ html
         - else
           = link_to new_user_session_path, class: "py-2 d-none d-md-inline-block center-icon" do
             i.far.fa-user-circle.fa-lg
-    .container.col-10 role="main" style="padding-bottom: 10px; padding-left: 0px; padding-right: 0px; padding-top: 0px !important; margin-top: 40px;"
+    .container.col-10 role="main" style=" padding-left: 0px; padding-right: 0px; padding-top: 0px !important; margin-top: 40px;"
       - flash.each do |type, message|
         - if type.eql?("notice")
           .alert.alert-success.center
